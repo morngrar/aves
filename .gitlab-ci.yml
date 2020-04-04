@@ -34,8 +34,8 @@ lintDebug:
     - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
   artifacts:
     paths:
-    - app/lint/reports/
-    expire_in: 1 week
+    - app/lint/reports/lint-results-debug.html
+    expire_in: 1 day
 
 assembleDebug:
   tags:
