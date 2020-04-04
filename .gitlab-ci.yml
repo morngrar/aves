@@ -31,7 +31,8 @@ lintDebug:
     - main
   stage: build
   script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+    ${ANDROID_HOME}/tools/lint --show
+    #- ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
       #  artifacts:
       #    paths:
       #    - app/lint/reports/lint-results-debug.html
