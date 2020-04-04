@@ -32,10 +32,10 @@ lintDebug:
   stage: build
   script:
     - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
-  artifacts:
-    paths:
-    - app/lint/reports/lint-results-debug.html
-    expire_in: 1 day
+      #  artifacts:
+      #    paths:
+      #    - app/lint/reports/lint-results-debug.html
+      #    expire_in: 1 day
 
 assembleDebug:
   tags:
@@ -43,10 +43,10 @@ assembleDebug:
   stage: build
   script:
     - ./gradlew assembleDebug
-  artifacts:
-    paths:
-    - app/build/outputs/
-    expire_in: 1 week
+      #  artifacts:
+      #    paths:
+      #    - app/build/outputs/
+      #    expire_in: 1 week
 
 debugTests:
   tags:
