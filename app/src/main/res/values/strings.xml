@@ -2,6 +2,7 @@
     <string name="app_name">Aves</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_camera">Camera</string>
+    <string name="nav_settings">Settings</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
