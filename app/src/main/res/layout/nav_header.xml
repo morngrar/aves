@@ -17,12 +17,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="coding in flow"
+        android:text="Aves"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="info@codinginflow" />
+        android:text="Menu"
+        android:textStyle="italic"/>
 
 </LinearLayout>

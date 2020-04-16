@@ -2,39 +2,33 @@ package ntnu20.imt3673.group4.aves
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
-import ntnu20.imt3673.group4.aves.databinding.ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var drawer: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /* Set the action bar that we are using */
         setSupportActionBar(toolbar)
 
-        this.drawer = findViewById(R.id.drawer_layout)
+        /* Configure our app bar to have 1 home destination and a drawer */
+        val navController = findNavController(R.id.nav_fragment)
+        val appBarConfig = AppBarConfiguration(navController.graph, mainDrawerLayout)
 
-        val toggle = ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        );
-        drawer.addDrawerListener(toggle);
-        toggle.syncState()
+        /* Hook up toolbar with nav controller */
+        toolbar.setupWithNavController(navController, appBarConfig)
+
+        /* Hook up drawer with nav controller */
+        navigationView.setupWithNavController(navController)
+
     }
 
-    override fun onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed()
-        }
-    }
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_fragment).navigateUp()
 }
+
