@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
+
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_fragment).navigateUp()
