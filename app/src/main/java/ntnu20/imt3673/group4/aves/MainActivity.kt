@@ -1,13 +1,19 @@
 package ntnu20.imt3673.group4.aves
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
+
+
+
+/**
+ * This is an example of how the location utility is to be used. It is important that this is
+ * used in a short-lived activity for registering gps data, or it will affect battery life.
+ */
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
-
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_fragment).navigateUp()
