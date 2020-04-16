@@ -22,4 +22,11 @@ object ZuluUtil {
     fun toDate(zulu: String) : Date? {
         return formatter.parse(zulu)
     }
+
+    /**
+     * Returns the absolute difference between the zulu string and the date object in seconds
+     */
+    fun getDifferenceBetween(zulu: String, date: Date) : Long {
+        return 0
+    }
 }
