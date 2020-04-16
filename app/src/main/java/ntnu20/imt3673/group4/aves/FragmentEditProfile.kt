@@ -54,6 +54,5 @@ class FragmentEditProfile : Fragment() {
             mA.supportFragmentManager.findFragmentByTag("main")
             mA.supportFragmentManager.popBackStack()
         }
-
     }
 }

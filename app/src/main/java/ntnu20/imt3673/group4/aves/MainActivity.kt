@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             val latitude = LocationUtility.latitude.toString()
             val longitude = LocationUtility.longitude.toString()
             textView.text = "lat: $latitude long: $longitude"
+
+            supportFragmentManager.beginTransaction().addToBackStack("profile").replace(R.id.main_view, FragmentProfile(), "profile").commit()
         }
     }
 

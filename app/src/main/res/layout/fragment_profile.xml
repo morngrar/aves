@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:id="@+id/profile_view">
 
-
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="wrap_content"

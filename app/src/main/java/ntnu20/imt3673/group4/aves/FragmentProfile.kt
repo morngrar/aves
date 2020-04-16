@@ -27,7 +27,7 @@ class FragmentProfile : Fragment() {
         /**
          * Clickable text and buttons
          */
-        btn_edit_profile.setOnClickListener{
+       btn_edit_profile.setOnClickListener{
             val mA : MainActivity = activity as MainActivity
 
         }
