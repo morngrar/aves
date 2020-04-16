@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-
+import androidx.fragment.app.viewModels
+import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 
 
 class ProfileFragment : Fragment() {
 
+    private lateinit var views: FragmentProfileBinding
+
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        views = FragmentProfileBinding.inflate(inflater, container, false)
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
