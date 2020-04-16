@@ -11,14 +11,14 @@
         android:id="@+id/avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/avatar_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.054"
-        android:contentDescription="@string/avatar_description"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars[2]" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -37,8 +37,8 @@
             android:padding="10dp"
             android:text="@string/real_name"
             android:textAlignment="center"
-            android:textSize="30dp"
-            android:textStyle="bold"></TextView>
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_user_name"
@@ -47,7 +47,7 @@
             android:padding="10dp"
             android:text="@string/user_name"
             android:textAlignment="center"
-            android:textSize="18dp"></TextView>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txt_my_friends"
@@ -56,7 +56,7 @@
             android:padding="10dp"
             android:text="@string/friends"
             android:textAlignment="center"
-            android:textSize="18dp"></TextView>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txt_my_observations"
@@ -65,7 +65,7 @@
             android:padding="10dp"
             android:text="@string/my_observations"
             android:textAlignment="center"
-            android:textSize="18dp"></TextView>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -79,4 +79,5 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         android:text="@string/edit_profile_button"
         app:layout_constraintVertical_bias="0.716" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
