@@ -41,7 +41,7 @@ class ZuluTests {
 
         val got = ZuluUtil.toDate(zulu)
         assertEquals(
-            "Conversion from custom zulu string should return the same date that creatied it",
+            "Conversion from custom zulu string should return the same date that created it",
             date,
             got
         )
