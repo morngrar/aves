@@ -1,5 +1,6 @@
 package ntnu20.imt3673.group4.aves
 
+import android.util.Log
 import ntnu20.imt3673.group4.aves.weather.ZuluUtil
 import org.junit.Test
 
@@ -11,14 +12,15 @@ import java.util.*
  */
 class ZuluTests {
     @Test
-    fun conversion_datetime_to_zulu_is_correct() {
+    fun conversion_date_to_zulu_is_correct() {
         val cal = Calendar.getInstance()
         cal.set(
             2016,
-            4,
+            3,  // january is 0
             15,
             20,
-            14
+            14,
+            0
         )
         val date = cal.time
         val got = ZuluUtil.toZulu(date)
@@ -31,7 +33,7 @@ class ZuluTests {
         val cal = Calendar.getInstance()
         cal.set(
             2016,
-            4,
+            3,
             15,
             20,
             14
@@ -42,8 +44,8 @@ class ZuluTests {
         val got = ZuluUtil.toDate(zulu)
         assertEquals(
             "Conversion from custom zulu string should return the same date that created it",
-            date,
-            got
+            date.toString(),
+            got.toString()
         )
     }
 }
