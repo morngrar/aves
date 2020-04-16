@@ -5,6 +5,7 @@ import ntnu20.imt3673.group4.aves.weather.ZuluUtil
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.time.Instant
 import java.util.*
 
 /**
@@ -13,10 +14,10 @@ import java.util.*
 class ZuluTests {
     @Test
     fun conversion_date_to_zulu_is_correct() {
-        val cal = Calendar.getInstance()
+        val cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         cal.set(
             2016,
-            3,  // january is 0
+            3,
             15,
             20,
             14,
