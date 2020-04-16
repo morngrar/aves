@@ -6,9 +6,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import ntnu20.imt3673.group4.aves.location.LocationUtility
-import ntnu20.imt3673.group4.aves.location.LocationUtility.LOCATION_PERMISSION_REQUEST_CODE
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
+
+/**
+ * This is an example of how the location utility is to be used. It is important that this is
+ * used in a short-lived activity for registering gps data, or it will affect battery life.
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             else -> {
                 PermissionUtility.requestFineLocationPermission(
                     this,
-                    LOCATION_PERMISSION_REQUEST_CODE
+                    LocationUtility.LOCATION_PERMISSION_REQUEST_CODE
                 )
             }
         }
@@ -54,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         when (requestCode) {
-            LOCATION_PERMISSION_REQUEST_CODE -> {
+            LocationUtility.LOCATION_PERMISSION_REQUEST_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     when {
                         PermissionUtility.locationIsEnabled(this) -> {
