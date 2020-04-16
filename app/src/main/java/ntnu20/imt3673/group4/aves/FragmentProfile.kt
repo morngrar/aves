@@ -9,9 +9,6 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class FragmentProfile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +28,7 @@ class FragmentProfile : Fragment() {
          * Clickable text and buttons
          */
         btn_edit_profile.setOnClickListener{
+            val mA : MainActivity = activity as MainActivity
 
         }
 
