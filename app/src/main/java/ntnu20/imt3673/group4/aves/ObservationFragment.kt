@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class ObservationFragment : Fragment() {
 
     private lateinit var views: FragmentObservationBinding
     private val PERMISSION_CODE = 42
+    private var oldDrawable : ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,6 +46,7 @@ class ObservationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        oldDrawable = image_view
         /**
          * Button to capture image, checks permission first
          */
@@ -65,15 +68,18 @@ class ObservationFragment : Fragment() {
             }
         }
 
+
         /**
          * Button to save image captured
          */
         btn_share.setOnClickListener {
-            if(image_view.drawable == null) {
-
-            }
+//            imageCheck()
         }
     }
+
+//    private fun imageCheck() {
+//        btn_share.isEnabled = image_view.drawable != oldDrawable?.drawable
+//    }
 
     private fun captureImage() {
         // Camera intent
