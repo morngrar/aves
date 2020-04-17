@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/dest_profile"
         android:name="ntnu20.imt3673.group4.aves.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="Profile">
         <action
             android:id="@+id/actionDestFragmentEditProfile"
             app:destination="@id/destFragmentEditProfile" />
@@ -43,5 +43,9 @@
     <fragment
         android:id="@+id/destFragmentEditProfile"
         android:name="ntnu20.imt3673.group4.aves.FragmentEditProfile"
-        android:label="FragmentEditProfile" />
+        android:label="Edit Profile" >
+        <action
+            android:id="@+id/actionDestFragmentProfile"
+            app:destination="@id/dest_profile" />
+    </fragment>
 </navigation>

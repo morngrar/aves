@@ -5,23 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 
 
 class FragmentEditProfile : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    private lateinit var views: FragmentProfileBinding
+
+    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+        views = FragmentProfileBinding.inflate(inflater, container, false)
         return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val mA: MainActivity = activity as MainActivity
+
         // TODO: mA.fragName = "edit_profile" or similar. Wait until main activity is done.
 
         /**
@@ -38,8 +40,9 @@ class FragmentEditProfile : Fragment() {
             // TODO: Clear avatar change?
 
             // change fragment
-            mA.supportFragmentManager.findFragmentByTag("profile")
-            mA.supportFragmentManager.popBackStack()
+            val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
+            Navigation.findNavController(it).navigate(actionDestFragmentProfile)
+
         }
 
         btn_save.setOnClickListener{
@@ -51,8 +54,7 @@ class FragmentEditProfile : Fragment() {
             // TODO: Clear avatar change?
 
             // change fragment
-            mA.supportFragmentManager.findFragmentByTag("profile")
-            mA.supportFragmentManager.popBackStack()
+
         }
     }
 }
