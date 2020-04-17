@@ -1,11 +1,8 @@
 package ntnu20.imt3673.group4.aves.weather
 
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.*
 import kotlin.math.abs
-import kotlin.math.floor
 import kotlin.math.round
 
 object ZuluUtil {

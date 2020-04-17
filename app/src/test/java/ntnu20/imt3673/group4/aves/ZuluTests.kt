@@ -101,6 +101,6 @@ class ZuluTests {
     @Test
     fun testing_url_getting() {
         val url = URL("https://api.met.no/weatherapi/nowcast/0.9/?lat=59.933333&lon=10.716667");
-        println(url.readText())
+        //println(url.readText())
     }
 }
