@@ -1,5 +1,7 @@
 package ntnu20.imt3673.group4.aves
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat

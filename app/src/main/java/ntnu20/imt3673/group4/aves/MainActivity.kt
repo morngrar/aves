@@ -1,6 +1,7 @@
 package ntnu20.imt3673.group4.aves
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 import com.google.android.material.navigation.NavigationView
 
 
@@ -34,6 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
+
+
+        /* Read preference data */
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+        val useHaptics = sharedPreferences.getBoolean("pref_haptics", false)
 
     }
     /** Sets up the navigation menu to their respective dests*/
