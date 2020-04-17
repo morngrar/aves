@@ -8,21 +8,21 @@ package ntnu20.imt3673.group4.aves.weather
 data class WeatherDataPoint(
     val zuluTime: String,           // met.no specific zulustring
     val altitude: Int,              // meters above sea
-    val temperature: Float,         // celsius
+    val temperature: String,         // celsius
     val windDirection: String,      // NN, NW etc
-    val windSpeed: Float,           // mps
-    val windGust: Float,            // mps
-    val humidity: Float,            // percent
-    val pressure: Float,            // hPa
-    val cloudiness: Float,          // percent
-    val fog: Float,                 // percent
-    val lowClouds: Float,           // percent
-    val mediumClouds: Float,        // percent
-    val highClouds: Float,          // percent
-    val dewPoint: Float,            // celsius -- called 'dewpoint' in the xml
+    val windSpeed: String,           // mps
+    val windGust: String,            // mps
+    val humidity: String,            // percent
+    val pressure: String,            // hPa
+    val cloudiness: String,          // percent
+    val fog: String,                 // percent
+    val lowClouds: String,           // percent
+    val mediumClouds: String,        // percent
+    val highClouds: String,          // percent
+    val dewPoint: String,            // celsius -- called 'dewpoint' in the xml
 
     // mm last hour
-    val precipitationValue: Float,
-    val precipitationMax: Float,
-    val precipitationMin: Float
+    val precipitationValue: String,
+    val precipitationMax: String,
+    val precipitationMin: String
 )

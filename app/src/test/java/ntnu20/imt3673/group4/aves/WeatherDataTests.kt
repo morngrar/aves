@@ -16,6 +16,31 @@ class WeatherDataTests {
             date
         )
 
-        val datapoint: WeatherDataPoint = WeatherUtil.getNearestDataPoint(date!!, Mock.xmlData)
+        val expected = WeatherDataPoint(
+            "2020-04-16T18:00:00Z",
+            136,
+            "7.9",
+            "N",
+            "7.1",
+           "11.0",
+            "41.5",
+            "1014.9",
+            "9.2",
+            "0.0",
+            "8.8",
+            "0.9",
+            "0.0",
+            "-4.3",
+            "0.0",
+            "0.0",
+           "0.0"
+        )
+
+        val got: WeatherDataPoint = WeatherUtil.getNearestDataPoint(date!!, Mock.xmlData)
+        assertEquals(
+            "Teh gotten data should match known occurrence",
+            expected,
+            got
+        )
     }
 }
