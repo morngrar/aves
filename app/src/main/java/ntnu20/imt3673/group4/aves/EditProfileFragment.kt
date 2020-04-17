@@ -38,7 +38,7 @@ class FragmentEditProfile : Fragment() {
             // TODO: Clear avatar change?
 
             // change fragment
-            mA.supportFragmentManager.findFragmentByTag("main")
+            mA.supportFragmentManager.findFragmentByTag("profile")
             mA.supportFragmentManager.popBackStack()
         }
 
@@ -51,7 +51,7 @@ class FragmentEditProfile : Fragment() {
             // TODO: Clear avatar change?
 
             // change fragment
-            mA.supportFragmentManager.findFragmentByTag("main")
+            mA.supportFragmentManager.findFragmentByTag("profile")
             mA.supportFragmentManager.popBackStack()
         }
     }
