@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
-
     }
     /** Sets up the navigation menu to their respective dests*/
     private fun setUpNavigationMenu(navController: NavController) {
