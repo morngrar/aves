@@ -42,7 +42,6 @@ class FragmentEditProfile : Fragment() {
             // change fragment
             val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
             Navigation.findNavController(it).navigate(actionDestFragmentProfile)
-
         }
 
         btn_save.setOnClickListener{
@@ -54,7 +53,8 @@ class FragmentEditProfile : Fragment() {
             // TODO: Clear avatar change?
 
             // change fragment
-
+            val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
+            Navigation.findNavController(it).navigate(actionDestFragmentProfile)
         }
     }
 }
