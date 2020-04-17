@@ -37,11 +37,10 @@ class MainActivity : AppCompatActivity() {
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
 
-
-        /* Read preference data */
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val useLocation = sharedPreferences.getBoolean("pref_location", false)
-        val useHaptics = sharedPreferences.getBoolean("pref_haptics", false)
+        /* Read preferences */
+        // TODO: Use these values to change behaviour in app. Enable/disable location etc
+        // val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        // var useLocation = sharedPreferences.getBoolean("pref_location", false)
 
     }
     /** Sets up the navigation menu to their respective dests*/
