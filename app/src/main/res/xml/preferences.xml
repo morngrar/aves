@@ -6,13 +6,18 @@
         android:summary="summary" />
 
     <SwitchPreferenceCompat
-        android:key="switch"
-        android:title="title"
-        android:summary="summary"/>
+        android:key="pref_location"
+        android:title="Use location"
+        android:summary="Enable location usage"/>
+
+    <SwitchPreferenceCompat
+        android:key="pref_haptics"
+        android:title="Use haptics"
+        android:summary="Enable vibration features"/>
 
     <SeekBarPreference
-        android:key="seekbar"
-        android:title="Seek bar!"
+        android:key="seekBar"
+        android:title="Seek bar example"
         android:max="10"
         android:defaultValue="5" />
 
