@@ -5,6 +5,7 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
 import java.io.InputStream
+import java.net.URL
 import java.util.*
 import kotlin.math.abs
 
@@ -36,8 +37,8 @@ object WeatherUtil {
             }
             // Starts by looking for the first time tag
             if (parser.name == "time") {
-                val from = ZuluUtil.toDate(readAttributeWithoutStepping(parser, "from"))
-                val to = ZuluUtil.toDate(readAttributeWithoutStepping(parser, "to"))
+                val from = ZuluUtil.toDate(readAttributeWithoutStepping(parser, "from")!!)
+                val to = ZuluUtil.toDate(readAttributeWithoutStepping(parser, "to")!!)
                 if (abs(from!!.time - to!!.time) == 21600000L) {
                     skip(parser) // six hours span
                     parser.nextTag()
@@ -137,8 +138,10 @@ object WeatherUtil {
             }
         }
 
+        parser.nextTag()
+        parser.require(XmlPullParser.END_TAG, ns, "time")
 
-        val point =  WeatherDataPoint(
+        return WeatherDataPoint(
             zuluTime,
             altitude,
             temperature,
@@ -157,12 +160,6 @@ object WeatherUtil {
             precipitationMax,
             precipitationMin
         )
-        println(point.zuluTime)
-
-        parser.nextTag()
-        parser.require(XmlPullParser.END_TAG, ns, "time")
-
-        return point
     }
 
     // Returns the value of the given attribute between location-tags
@@ -177,7 +174,7 @@ object WeatherUtil {
 
     // Returns the value of the given attribute, without stepping the parser forward
     @Throws(IOException::class, XmlPullParserException::class)
-    private fun readAttributeWithoutStepping(parser: XmlPullParser, name: String): String {
+    private fun readAttributeWithoutStepping(parser: XmlPullParser, name: String): String? {
         parser.require(XmlPullParser.START_TAG, ns, parser.name)
         return parser.getAttributeValue(null, name)
     }
@@ -189,7 +186,6 @@ object WeatherUtil {
 
         var pointData: WeatherDataPoint? = null
         for (point in pointList) {
-            //println(point)
             val pointDate = ZuluUtil.toDate(point.zuluTime)
             if (pointDate != null) {
                 if (pointDate.after(date)) {
@@ -200,5 +196,13 @@ object WeatherUtil {
         }
 
         return pointData
+    }
+
+    /**
+     * Returns the most relevant data point from the location given
+     */
+    fun getRecentFrom(latitude: Double, longitude: Double) : WeatherDataPoint? {
+        val url = URL("https://api.met.no/weatherapi/locationforecast/1.9/?lat=$latitude&lon=$longitude");
+        return getNearestDataPoint(Date(), url.readText())
     }
 }
