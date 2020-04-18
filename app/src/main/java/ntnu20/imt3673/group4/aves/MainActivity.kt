@@ -23,11 +23,8 @@ import kotlinx.android.synthetic.main.fragment_activity_main.*
  * This is an example of how the location utility is to be used. It is important that this is
  * used in a short-lived activity for registering gps data, or it will affect battery life.
  */
-class MainActivity : AppCompatActivity(), SensorEventListener {
 
-    private lateinit var sensorManager: SensorManager
-    private var light: Sensor? = null
-
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,12 +47,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // var useLocation = sharedPreferences.getBoolean("pref_location", false)
 
-        /* Light sensor */
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
-
     }
-    /** Sets up the navigation menu to their respective dests*/
+    /* Sets up the navigation menu to their respective tests */
     private fun setUpNavigationMenu(navController: NavController) {
         navigationView?.let {
             NavigationUI.setupWithNavController(it, navController)
@@ -70,28 +63,5 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
     }
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
-
-
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        // Not implemented. Not Needed. 
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if (event != null) {
-            txt_hello.text = ("Lux: " + event.values[0])
-        }
-    }
-
-    override fun onResume() {
-        // Register a listener for the sensor.
-        super.onResume()
-        sensorManager.registerListener(this, light, SensorManager.SENSOR_DELAY_NORMAL)
-    }
-
-    override fun onPause() {
-        // Be sure to unregister the sensor when the activity pauses.
-        super.onPause()
-        sensorManager.unregisterListener(this)
-    }
 }
 

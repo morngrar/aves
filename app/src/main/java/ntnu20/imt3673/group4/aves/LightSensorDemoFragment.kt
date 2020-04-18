@@ -11,7 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_activity_main.*
 import kotlinx.android.synthetic.main.fragment_light_sensor_demo.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentLightSensorDemoBinding
 import java.io.IOException
@@ -19,11 +27,20 @@ import java.io.IOException
 
 class LightSensorDemoFragment : Fragment(), SensorEventListener {
 
-    var sensor : Sensor? = null
+    var light : Sensor? = null
     private lateinit var sensorManager: SensorManager
     var isRunning = false
 
     private lateinit var views: FragmentLightSensorDemoBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        /* Light sensor */
+        sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         views = FragmentLightSensorDemoBinding.inflate(inflater, container, false)
@@ -35,57 +52,37 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
 
         text_light.visibility = View.INVISIBLE
         text_dark.visibility = View.INVISIBLE
-
-
-
-        sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_LIGHT)
     }
 
-//    override fun OnResume() {
-//        super.onResume()
-//        sensorManager!!.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        sensorManager!!.unregisterListener(this)
-//    }
-
+    /* What happens when light sensor accuracy is changed */
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        TODO("Not implemented")
+        // Not implemented. Not Needed.
     }
 
+    /* What happens when light sensor detects a change */
     override fun onSensorChanged(event: SensorEvent?) {
-
         if (event != null) {
-            if (event.sensor.type == Sensor.TYPE_LIGHT) {
-                sensorText.text = "" + event.values[0]
-                sensorText.visibility = View.VISIBLE
-            }
+            txt_lux.text = ("Lux: " + event.values[0])
 
-
-        }
-        val text = ("sensor changed!" + (event?.values?.get(0) ?: ""))
-        val duration = Toast.LENGTH_SHORT
-
-        val toast = Toast.makeText(context, text, duration)
-        toast.show()
-
-        try {
-            if(event!!.values[0] < 30 && !isRunning) {
-                isRunning
+            if (event!!.values[0] < 30) {
                 text_dark.visibility = View.VISIBLE
                 text_light.visibility = View.INVISIBLE
             } else {
-                isRunning = false
-                sensorText.visibility = View.VISIBLE
                 text_dark.visibility = View.INVISIBLE
-                text_light.visibility = View.INVISIBLE
+                text_light.visibility = View.VISIBLE
             }
         }
-        catch (e : IOException) {
+    }
 
-        }
+    override fun onResume() {
+        // Register a listener for the light sensor.
+        super.onResume()
+        sensorManager.registerListener(this, light, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun onPause() {
+        /* Unregister light sensor when activity pauses to prevent battery drain in background */
+        super.onPause()
+        sensorManager.unregisterListener(this)
     }
 }
