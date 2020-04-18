@@ -1,28 +1,17 @@
 package ntnu20.imt3673.group4.aves
 
 import android.app.Activity
-import android.content.ContentResolver
-import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.provider.SyncStateContract.Helpers.insert
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_observation.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentObservationBinding
@@ -32,7 +21,6 @@ class ObservationFragment : Fragment() {
 
     private lateinit var views: FragmentObservationBinding
     private val PERMISSION_CODE = 42
-    private var oldDrawable : ImageView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,11 +34,10 @@ class ObservationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        oldDrawable = image_view
         /**
          * Button to capture image, checks permission first
          */
-        btn_capture.setOnClickListener() {
+        btn_capture.setOnClickListener {
             if (context?.checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
                 || context?.checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_DENIED
@@ -73,13 +60,9 @@ class ObservationFragment : Fragment() {
          * Button to save image captured
          */
         btn_share.setOnClickListener {
-//            imageCheck()
+            // Check if image_view.drawable was changed
         }
     }
-
-//    private fun imageCheck() {
-//        btn_share.isEnabled = image_view.drawable != oldDrawable?.drawable
-//    }
 
     private fun captureImage() {
         // Camera intent
