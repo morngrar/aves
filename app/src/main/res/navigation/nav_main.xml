@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@+id/dest_home">
+
+    <fragment
+        android:id="@+id/dest_home"
+        android:name="ntnu20.imt3673.group4.aves.MainActivityFragment"
+        android:label="Hello"
+        tools:layout="@layout/fragment_activity_main">
+        <action
+            android:id="@+id/action_dest_fragment_activity_main_to_profileFragment"
+            app:destination="@id/dest_profile" />
+        <action
+            android:id="@+id/action_dest_fragment_activity_main_to_settingsFragment"
+            app:destination="@id/dest_settings" />
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/dest_observation" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_profile"
+        android:name="ntnu20.imt3673.group4.aves.ProfileFragment"
+        android:label="Profile">
+        <action
+            android:id="@+id/actionDestFragmentEditProfile"
+            app:destination="@id/destFragmentEditProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_settings"
+        android:name="ntnu20.imt3673.group4.aves.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/dest_observation"
+        android:name="ntnu20.imt3673.group4.aves.ObservationFragment"
+        android:label="ObservationFragment" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/dest_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/destFragmentEditProfile"
+        android:name="ntnu20.imt3673.group4.aves.FragmentEditProfile"
+        android:label="Edit Profile" >
+        <action
+            android:id="@+id/actionDestFragmentProfile"
+            app:destination="@id/dest_profile" />
+    </fragment>
+</navigation>
