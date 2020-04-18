@@ -1,6 +1,7 @@
 package ntnu20.imt3673.group4.aves
 
 import android.content.Context
+import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -66,9 +67,11 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
             if (event!!.values[0] < 30) {
                 text_dark.visibility = View.VISIBLE
                 text_light.visibility = View.INVISIBLE
+                constraintLayout1.setBackgroundColor(Color.parseColor("#404040"))
             } else {
                 text_dark.visibility = View.INVISIBLE
                 text_light.visibility = View.VISIBLE
+                constraintLayout1.setBackgroundColor(Color.parseColor("#ffffff"))
             }
         }
     }
