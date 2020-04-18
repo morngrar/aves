@@ -15,7 +15,7 @@
             android:title="@string/nav_profile" />
         <item
             android:id="@+id/dest_lightSensorDemo"
-            android:icon="@drawable/ic_person"
+            android:icon="@drawable/ic_wb_sunny_black_24dp"
             android:title="@string/nav_lightSensorDemo" />
         <item
             android:id="@+id/dest_settings"
