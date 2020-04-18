@@ -16,4 +16,6 @@
     <string name="button_text_save">Save</string>
     <string name="button_text_cancel">Cancel</string>
     <string name="edit_avatar">Click to upload new</string>
+    <string name="txt_light">It is bright where you are</string>
+    <string name="txt_dark">You are in the dark</string>
 </resources>
