@@ -1,5 +1,10 @@
 package ntnu20.imt3673.group4.aves
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,12 +16,14 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.fragment_activity_main.*
 
 
 /**
  * This is an example of how the location utility is to be used. It is important that this is
  * used in a short-lived activity for registering gps data, or it will affect battery life.
  */
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         // var useLocation = sharedPreferences.getBoolean("pref_location", false)
 
     }
-    /** Sets up the navigation menu to their respective dests*/
+    /* Sets up the navigation menu to their respective tests */
     private fun setUpNavigationMenu(navController: NavController) {
         navigationView?.let {
             NavigationUI.setupWithNavController(it, navController)
