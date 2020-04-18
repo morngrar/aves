@@ -60,8 +60,8 @@ class WeatherDataTests {
         val dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
         assertEquals(
             "gotten datapoint should match known value",
-            496,
-            dataPoint?.altitude?.toInt()
+            "496",
+            dataPoint?.altitude
         )
     }
 }
