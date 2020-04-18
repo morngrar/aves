@@ -27,9 +27,8 @@ import java.io.IOException
 
 class LightSensorDemoFragment : Fragment(), SensorEventListener {
 
-    var light : Sensor? = null
+    private var light : Sensor? = null
     private lateinit var sensorManager: SensorManager
-    var isRunning = false
 
     private lateinit var views: FragmentLightSensorDemoBinding
 
@@ -62,7 +61,7 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
     /* What happens when light sensor detects a change */
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
-            txt_lux.text = ("Lux: " + event.values[0])
+            txt_lux.text = ("Current light (lux): " + event.values[0])
 
             if (event!!.values[0] < 30) {
                 text_dark.visibility = View.VISIBLE
