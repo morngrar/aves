@@ -34,9 +34,9 @@ object ZuluUtil {
      * Returns the absolute difference between the zulu string and the date object in seconds
      */
     fun getDifferenceBetween(zulu: String, date: Date) : Long {
-        val zuluSeconds = _getFormatter().parse(zulu).time/1000
+        val zuluSeconds = _getFormatter().parse(zulu)?.time?.div(1000)
         val dateSeconds = date.time/1000
-        val diff = round(zuluSeconds.toDouble() - dateSeconds.toDouble())
+        val diff = round(zuluSeconds!!.toDouble() - dateSeconds.toDouble())
         return abs(diff.toLong())
     }
 }

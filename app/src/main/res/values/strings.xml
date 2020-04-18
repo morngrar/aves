@@ -15,4 +15,5 @@
     <string name="button_text_save">Save</string>
     <string name="button_text_cancel">Cancel</string>
     <string name="edit_avatar">Click to upload new</string>
+    <string name="the_title_of_an_observation">The Title of an Observation</string>
 </resources>

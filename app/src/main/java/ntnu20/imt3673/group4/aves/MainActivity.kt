@@ -1,16 +1,14 @@
 package ntnu20.imt3673.group4.aves
 
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
-import com.google.android.material.navigation.NavigationView
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -19,9 +17,11 @@ import com.google.android.material.navigation.NavigationView
  */
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         /* Set the action bar that we are using */
         setSupportActionBar(toolbar)
 
@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         // var useLocation = sharedPreferences.getBoolean("pref_location", false)
 
     }
+
+
+
     /** Sets up the navigation menu to their respective dests*/
     private fun setUpNavigationMenu(navController: NavController) {
         navigationView?.let {
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed();
         }
     }
+
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 }
 
