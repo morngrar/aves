@@ -61,7 +61,7 @@ android {
 }
 
 tasks.withType(Test) {
-     systemProperty "robolectric.logging", "stdout"
+    systemProperty "robolectric.logging", "stdout"
 }
 
 dependencies {
