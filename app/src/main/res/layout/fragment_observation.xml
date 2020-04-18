@@ -8,18 +8,39 @@
     <!-- Image in which image will be set-->
     <ImageView
         android:id="@+id/image_view"
-        android:src="@drawable/ic_image"
-        android:scaleType="centerCrop"
         android:layout_width="400dp"
-        android:layout_height="500dp"/>
+        android:layout_height="500dp"
+        android:scaleType="centerCrop"
+      />
 
-    <!-- Button to open camera -->
-    <Button
-        android:id="@+id/btn_capture"
-        android:background="@drawable/ic_camera_alt_black_24dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <!-- Button to open camera -->
+        <Button
+            android:enabled="true"
+            android:layout_weight="1"
+            android:id="@+id/btn_capture"
+            android:background="@drawable/ic_camera_alt_black_24dp"
+            android:layout_width="20dp"
+            android:layout_height="100dp"/>
+
+        <!-- Button to share -->
+        <Button
+            android:enabled="true"
+            android:layout_weight="1"
+            android:id="@+id/btn_share"
+            android:background="@drawable/ic_check"
+            android:layout_width="20dp"
+            android:layout_height="100dp"/>
+
+    </LinearLayout>
 
 
 
 </LinearLayout>
+
+    <!--        android:background="@drawable/ic_camera_alt_black_24dp"-->
