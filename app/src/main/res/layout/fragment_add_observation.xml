@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel" />
     </data>
 
     <FrameLayout
@@ -31,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:enabled="false"
-                android:text="Add observation"
+                android:enabled="@{vm.validated}"
+                android:text="@string/lbl_btn_add_observation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.503"
@@ -55,30 +57,31 @@
                     android:id="@+id/txt_bird_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Bird name" />
+                    android:inputType="textAutoComplete"
+                    android:hint="@string/hint_bird_name" />
 
                 <TextView
                     android:id="@+id/txt_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Location: 120.334443, 10.345"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="18dp" />
+                    android:text="@{@string/lbl_location(vm.location)}"
+                    android:textColor="@{vm.gotLocation ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_weather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Weather data: Retrieving..."
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="18dp" />
+                    android:text="@{vm.gotWeather ? @string/lbl_weather_data(@string/str_done) : @string/lbl_weather_data(@string/str_retrieving)}"
+                    android:textColor="@{vm.gotWeather ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/txt_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Time: Lø. 18. april 2020, kl 16:58"
-                    android:textSize="18dp" />
+                    android:text="@{vm.time}"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -87,7 +90,8 @@
                 android:id="@+id/txt_addobs_image_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap to take a picture"
+                android:text="@string/tap_to_take_a_picture"
+                android:enabled="@{!vm.validated}"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
