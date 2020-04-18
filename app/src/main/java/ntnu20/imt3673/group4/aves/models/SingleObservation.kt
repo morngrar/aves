@@ -5,7 +5,7 @@ data class SingleObservation (
     var title: String,
     var body: String,
     var image: String,
-
+    var uname: String
 ){
 
 }
