@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 
 object PermissionUtility {
     fun haveFineLocationPermission(ctx: Context) : Boolean {
@@ -27,7 +28,7 @@ object PermissionUtility {
                 || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
-    fun requestFineLocationPermission(activity: AppCompatActivity, reqID: Int) {
+    fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
         ActivityCompat.requestPermissions(
             activity,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
