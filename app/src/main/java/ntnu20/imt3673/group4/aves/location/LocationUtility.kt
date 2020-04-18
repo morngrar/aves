@@ -1,6 +1,5 @@
 package ntnu20.imt3673.group4.aves.location
 
-import android.app.Activity
 import android.content.Context
 import android.os.Looper
 import com.google.android.gms.location.LocationCallback
