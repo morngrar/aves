@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ntnu20.imt3673.group4.aves">
 
+
+
 <!--    Allow access to camera, write, read external storage permission-->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -11,6 +13,8 @@
     <uses-feature android:name="android.hardware.camera.auto-focus" />
 <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true"/>
 
     <application
         android:allowBackup="true"
