@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/bgColor"
     android:id="@+id/mainDrawerLayout"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
@@ -44,5 +45,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/menu_main"
+        android:background="?attr/bgColor"
         />
 </androidx.drawerlayout.widget.DrawerLayout>

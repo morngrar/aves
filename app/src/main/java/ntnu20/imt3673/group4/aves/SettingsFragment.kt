@@ -1,11 +1,11 @@
 package ntnu20.imt3673.group4.aves
 
-import android.content.Context
-import android.content.SharedPreferences
+
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -24,21 +24,21 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 } else {
                     "Location is disabled"
                 }
+
             }
 
-        /**
-         * Haptics:
-         * Change description of summary for the haptics preference
-         */
-        val hapticsPreference: SwitchPreferenceCompat? = findPreference("pref_haptics")
-        hapticsPreference?.summaryProvider =
-            Preference.SummaryProvider<SwitchPreferenceCompat> { preference ->
-                if (preference.isChecked) {
-                    "Haptics are enabled"
-                } else {
-                    "Haptics are disabled"
-                }
+        val restartButton: Preference? = findPreference("btn_restart_app")
+        restartButton!!.onPreferenceClickListener =
+            Preference.OnPreferenceClickListener { //code for what you want it to do
+                activity?.recreate();
+                true
             }
+
+
+
     }
+
+
+
 
 }

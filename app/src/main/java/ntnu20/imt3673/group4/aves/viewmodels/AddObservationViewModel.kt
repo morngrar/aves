@@ -3,7 +3,9 @@ package ntnu20.imt3673.group4.aves.viewmodels
 import android.app.Application
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -58,7 +60,6 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
             emit(bool)
             bool = _gotLocation.value!! && _gotWeather.value!!
             bool = bool && !birdName.value.isNullOrBlank()
-            //TODO: Check for image path as well
             delay(100)
 
             Log.d("AVES-VALIDATOR", "running validated coroutine")
@@ -66,6 +67,11 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
             Log.d("AVES-VALIDATOR", "Bird name: ${birdName.value}")
 
         }
+    }
+
+    private var path: String? = null
+    fun getImageViewPath(imgPath: String){
+        path = imgPath
     }
 
     val time = Date()
@@ -80,7 +86,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
             ObservationData(
                 0,
                 birdName.value!!,
-                "NOT IMPLEMENTED", //TODO: get image path and add here
+                path!!,
                 time.time,
                 latitude!!,
                 longitude!!,

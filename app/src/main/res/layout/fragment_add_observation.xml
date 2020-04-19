@@ -19,11 +19,11 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/img_add_observation"
-                android:layout_width="175dp"
-                android:layout_height="300dp"
+                android:id="@+id/image_view_observation"
+                android:layout_width="328dp"
+                android:layout_height="338dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_camera_alt_black_24dp"
+                android:src="@{vm.getImage , default=@drawable/ic_image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,8 +43,8 @@
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
-                android:layout_width="409dp"
-                android:layout_height="0dp"
+                android:layout_width="402dp"
+                android:layout_height="185dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="84dp"
                 android:orientation="vertical"
@@ -52,7 +52,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_add_observation">
+                app:layout_constraintTop_toBottomOf="@+id/image_view_observation">
 
                 <EditText
                     android:id="@+id/txt_bird_name"
@@ -88,18 +88,15 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txt_addobs_image_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tap_to_take_a_picture"
-                android:enabled="@{!vm.validated}"
+            <Button
+                android:id="@+id/btn_capture"
+                android:layout_width="61dp"
+                android:layout_height="57dp"
+                android:background="@drawable/ic_camera_alt_black_24dp"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_add_observation"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="@+id/image_view_observation"
+                app:layout_constraintStart_toStartOf="@+id/image_view_observation"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_observation" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

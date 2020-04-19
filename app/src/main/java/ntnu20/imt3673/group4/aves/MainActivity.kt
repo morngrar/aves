@@ -3,6 +3,7 @@ package ntnu20.imt3673.group4.aves
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
@@ -23,6 +25,21 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        /* Read preferences */
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        // var useLocation = sharedPreferences.getBoolean("pref_location", false)
+
+        /* Set app theme at startup */
+        val useDarkMode = sharedPreferences.getBoolean("pref_theme", false)
+        if (useDarkMode) {
+            Log.d("darkMode", "true")
+            setTheme(R.style.AppThemeDark)
+        } else {
+            Log.d("darkMode", "false")
+            setTheme(R.style.AppThemeLight)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
