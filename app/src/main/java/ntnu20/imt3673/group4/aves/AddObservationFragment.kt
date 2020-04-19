@@ -43,11 +43,12 @@ class AddObservationFragment : Fragment() {
         return binding.root
     }
 
-    private suspend fun getWeatherData(latitude: Double, longitude: Double) = run {
+    private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {7
+        var dataPoint: WeatherDataPoint? = null
         withContext(Dispatchers.IO) {
-            val dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
-            viewModel.setWeatherData(dataPoint!!)
+            dataPoint =  WeatherUtil.getRecentFrom(latitude, longitude)
         }
+        return dataPoint
     }
 
     private fun getLocationAndWeather() = lifecycleScope.launch {
@@ -57,6 +58,7 @@ class AddObservationFragment : Fragment() {
             val latitude = LocationUtility.latitude
             val longitude = LocationUtility.longitude
             viewModel.setLocation(latitude, longitude)
+            viewModel.setWeatherData(getWeatherData(latitude, longitude)!!)
         } else {
             Log.d("AVES", "havePermission is false")
         }
