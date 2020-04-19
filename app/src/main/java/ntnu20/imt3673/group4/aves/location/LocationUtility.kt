@@ -2,6 +2,7 @@ package ntnu20.imt3673.group4.aves.location
 
 import android.content.Context
 import android.os.Looper
+import android.util.Log
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -28,6 +29,7 @@ object LocationUtility {
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)
 
+                    Log.d("LOCATION UTILITY", "updating coordinates...")
                     for (location in locationResult.locations) {
                         latitude = location.latitude
                         longitude = location.longitude
