@@ -1,5 +1,8 @@
 package ntnu20.imt3673.group4.aves
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
+import java.io.File
 
 
 class FragmentEditProfile : Fragment() {
@@ -24,14 +28,14 @@ class FragmentEditProfile : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        // TODO: mA.fragName = "edit_profile" or similar. Wait until main activity is done.
-
-        /**
-         * Clickable text and buttons
-         */
         avatar.setOnClickListener{
-                // TODO: Change avatar
-            }
+            // TODO: Change avatar
+            pickImageFromGallery();
+        }
+
+        text_change_avatar.setOnClickListener {
+            pickImageFromGallery();
+        }
 
         btn_cancel.setOnClickListener{
             // clear text fields
@@ -55,6 +59,19 @@ class FragmentEditProfile : Fragment() {
             // change fragment
             val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
             Navigation.findNavController(it).navigate(actionDestFragmentProfile)
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, 1000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == 1000){
+            avatar.setImageURI(data?.data)
         }
     }
 }
