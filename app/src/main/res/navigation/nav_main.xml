@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/dest_home"
         android:name="ntnu20.imt3673.group4.aves.MainActivityFragment"
-        android:label="Hello"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_activity_main">
         <action
             android:id="@+id/action_dest_fragment_activity_main_to_profileFragment"
@@ -16,12 +16,13 @@
         <action
             android:id="@+id/action_dest_fragment_activity_main_to_settingsFragment"
             app:destination="@id/dest_settings" />
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/dest_observation" />
+
         <action
             android:id="@+id/actionDestLightSensorDemo"
             app:destination="@id/dest_lightSensorDemo" />
+        <action
+            android:id="@+id/dest_add_observation"
+            app:destination="@id/dest_add_observation_fragment" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -35,14 +36,7 @@
         android:id="@+id/dest_settings"
         android:name="ntnu20.imt3673.group4.aves.SettingsFragment"
         android:label="SettingsFragment" />
-    <fragment
-        android:id="@+id/dest_observation"
-        android:name="ntnu20.imt3673.group4.aves.ObservationFragment"
-        android:label="ObservationFragment" >
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/dest_home" />
-    </fragment>
+
     <fragment
         android:id="@+id/destFragmentEditProfile"
         android:name="ntnu20.imt3673.group4.aves.FragmentEditProfile"
@@ -56,4 +50,12 @@
         android:name="ntnu20.imt3673.group4.aves.LightSensorDemoFragment"
         android:label="Light Sensor Demo"
         tools:layout="@layout/fragment_light_sensor_demo" />
+    <fragment
+        android:id="@+id/dest_add_observation_fragment"
+        android:name="ntnu20.imt3673.group4.aves.AddObservationFragment"
+        android:label="AddObservationFragment" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/dest_home" />
+    </fragment>
 </navigation>

@@ -64,7 +64,7 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
         if (event != null) {
             txt_lux.text = ("Current light (lux): " + event.values[0])
 
-            if (event!!.values[0] < 30) {
+            if (event.values[0] < 30) {
                 text_dark.visibility = View.VISIBLE
                 text_light.visibility = View.INVISIBLE
                 constraintLayout1.setBackgroundColor(Color.parseColor("#0f2040"))
