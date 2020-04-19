@@ -11,9 +11,9 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:background">@color/windowBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="textColor">@color/colorPrimaryDark</item>
+        <item name="metaTextColor">#606060</item>
+        <item name="textColor">@color/textColorPrimary</item>
     </style>
-
 
     <!-- Base application theme Dark. -->
     <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -26,6 +26,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:background">@color/windowBackgroundDark</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
-        <item name="textColor">@color/colorDarkThemePrimaryDark</item>
+        <item name="textColor">@color/textColorPrimaryDark</item>
+        <item name="metaTextColor">#aeaeae</item>
     </style>
 </resources>
