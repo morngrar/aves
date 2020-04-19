@@ -1,5 +1,6 @@
 package ntnu20.imt3673.group4.aves.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ntnu20.imt3673.group4.aves.data.ObservationData
 import ntnu20.imt3673.group4.aves.databinding.ObservationCardBinding
+import java.io.File
 import java.util.*
 
 
@@ -34,6 +36,9 @@ class ObservationAdapter : ListAdapter<ObservationData, ObservationAdapter.ViewH
         holder.binding.lblCardPressure.text = "Pressure: ${observation.pressure} hPa"
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
+
+        val file = File(observation.imagePath)
+        holder.binding.imgBirdPreview.setImageURI(Uri.fromFile(file))
     }
     /**
      * @brief EntryDifferenceCallback
