@@ -85,9 +85,7 @@
                     android:text="@{vm.time}"
                     android:textSize="18sp" />
 
-
             </LinearLayout>
-
 
             <Button
                 android:id="@+id/btn_capture"

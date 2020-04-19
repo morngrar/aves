@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
