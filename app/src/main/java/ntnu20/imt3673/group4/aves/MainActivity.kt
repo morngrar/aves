@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
@@ -39,9 +38,10 @@ class MainActivity : AppCompatActivity() {
         navigationView.setupWithNavController(navController)
 
         /* Read preferences */
-        // TODO: Use these values to change behaviour in app. Enable/disable location etc
+/*
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val useLocation = sharedPreferences.getBoolean("pref_location", false)
+*/
 
         // Ensuring permissions for location -- if using location
         when {

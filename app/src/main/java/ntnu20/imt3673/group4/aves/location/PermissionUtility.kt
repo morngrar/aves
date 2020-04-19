@@ -20,27 +20,12 @@ object PermissionUtility {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    fun haveInternetPermission(ctx: Context) : Boolean {
-        return ContextCompat.checkSelfPermission(
-            ctx,
-            Manifest.permission.INTERNET
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
     fun locationIsEnabled(ctx: Context) : Boolean {
         val locationManager: LocationManager =
             ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-    }
-
-    fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
-        ActivityCompat.requestPermissions(
-            activity,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            reqID
-        )
     }
 
     fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
