@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <provider
-            android:authorities="com.example.android.fileprovider"
+            android:authorities="ntnu20.imt3673.group4.aves.provider"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
