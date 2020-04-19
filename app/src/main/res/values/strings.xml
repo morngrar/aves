@@ -5,6 +5,7 @@
     <string name="nav_camera">Camera</string>
     <string name="nav_add_observation">Add Observation</string>
     <string name="nav_settings">Settings</string>
+    <string name="nav_lightSensorDemo">Light Sensor Demo</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="avatar_description">Avatar</string>
@@ -25,4 +26,7 @@
     <string name="str_done">Done!</string>
     <string name="str_retrieving">Retrieving…</string>
     <string name="str_not_permitted">Not enabled in Aves settings.</string>
+    <string name="txt_light">It is bright where you are</string>
+    <string name="txt_dark">You are in the dark</string>
+>>>>>>> master
 </resources>
