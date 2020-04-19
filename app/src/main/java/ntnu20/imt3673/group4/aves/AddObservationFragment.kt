@@ -151,7 +151,6 @@ class AddObservationFragment : Fragment() {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        Log.d("AAAAAAAA",  requireContext().filesDir.toString())
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */
@@ -168,6 +167,13 @@ class AddObservationFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == requestCode && resultCode == Activity.RESULT_OK) {
             image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
+
+            // Create card, set information on card from parameter
+            uploadObservation()
         }
+    }
+
+    private fun uploadObservation() {
+
     }
 }
