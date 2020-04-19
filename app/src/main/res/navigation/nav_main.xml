@@ -22,7 +22,7 @@
             app:destination="@id/dest_lightSensorDemo" />
         <action
             android:id="@+id/dest_add_observation"
-            app:destination="@id/addObservationFragment" />
+            app:destination="@id/dest_add_observation_fragment" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -51,7 +51,11 @@
         android:label="Light Sensor Demo"
         tools:layout="@layout/fragment_light_sensor_demo" />
     <fragment
-        android:id="@+id/addObservationFragment"
+        android:id="@+id/dest_add_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.AddObservationFragment"
-        android:label="AddObservationFragment" />
+        android:label="AddObservationFragment" >
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/dest_home" />
+    </fragment>
 </navigation>

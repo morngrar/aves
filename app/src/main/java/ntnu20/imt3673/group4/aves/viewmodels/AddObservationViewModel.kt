@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
+import androidx.navigation.Navigation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ntnu20.imt3673.group4.aves.R
@@ -78,15 +79,16 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     val timeString = time.toString()
 
     private val db = ObservationDatabase.getInstance(application)
-    fun handleClick(view: View) {
-        addObservation()
-    }
     fun addObservation() = viewModelScope.launch {
+        var calcPath: String = ""
+        if (path != null) {
+            calcPath = path!!
+        }
         db.observations().insertObservation(
             ObservationData(
                 0,
                 birdName.value!!,
-                path!!,
+                calcPath,
                 time.time,
                 latitude!!,
                 longitude!!,

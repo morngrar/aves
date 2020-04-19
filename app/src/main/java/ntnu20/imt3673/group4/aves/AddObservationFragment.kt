@@ -19,6 +19,7 @@ import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.fragment_add_observation.*
 import kotlinx.coroutines.Dispatchers
@@ -101,6 +102,12 @@ class AddObservationFragment : Fragment() {
         btn_capture.setOnClickListener {
             checkPermission()
         }
+
+        btn_add_observation.setOnClickListener {
+            viewModel.addObservation()
+            val homeAction = AddObservationFragmentDirections.nextAction()
+            Navigation.findNavController(it).navigate(homeAction)
+        }
     }
 
     /**
@@ -174,7 +181,6 @@ class AddObservationFragment : Fragment() {
         if(requestCode == requestCode && resultCode == Activity.RESULT_OK) {
             image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
             viewModel.getImageViewPath(currentPhotoPath)
-            viewModel.addObservation()
         }
     }
 

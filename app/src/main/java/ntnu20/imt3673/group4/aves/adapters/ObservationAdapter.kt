@@ -37,8 +37,10 @@ class ObservationAdapter : ListAdapter<ObservationData, ObservationAdapter.ViewH
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
 
-        val file = File(observation.imagePath)
-        holder.binding.imgBirdPreview.setImageURI(Uri.fromFile(file))
+        if (observation.imagePath != "") {
+            val file = File(observation.imagePath)
+            holder.binding.imgBirdPreview.setImageURI(Uri.fromFile(file))
+        }
     }
     /**
      * @brief EntryDifferenceCallback

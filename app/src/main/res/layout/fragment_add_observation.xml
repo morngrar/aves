@@ -23,18 +23,17 @@
                 android:layout_width="328dp"
                 android:layout_height="338dp"
                 android:layout_marginTop="16dp"
-                android:src="@{vm.getImage , default=@drawable/ic_image}"
+                android:src="@{@drawable/ic_image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_add_observation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:enabled="@{vm.validated}"
-                android:onClick="@{vm::handleClick}"
                 android:text="@string/lbl_btn_add_observation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
