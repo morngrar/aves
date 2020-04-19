@@ -21,7 +21,6 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
  * This is an example of how the location utility is to be used. It is important that this is
  * used in a short-lived activity for registering gps data, or it will affect battery life.
  */
-
 class MainActivity : AppCompatActivity() {
 
 
@@ -58,9 +57,10 @@ class MainActivity : AppCompatActivity() {
         navigationView.setupWithNavController(navController)
 
         /* Read preferences */
-        // TODO: Use these values to change behaviour in app. Enable/disable location etc
-//        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-//        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+/*
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+*/
 
         // Ensuring permissions for location -- if using location
         when {

@@ -20,13 +20,6 @@ object PermissionUtility {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    fun haveInternetPermission(ctx: Context) : Boolean {
-        return ContextCompat.checkSelfPermission(
-            ctx,
-            Manifest.permission.INTERNET
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
     fun locationIsEnabled(ctx: Context) : Boolean {
         val locationManager: LocationManager =
             ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManager

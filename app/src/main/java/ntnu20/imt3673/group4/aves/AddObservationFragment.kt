@@ -29,7 +29,9 @@ import ntnu20.imt3673.group4.aves.databinding.FragmentAddObservationBinding
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 import ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel
+import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import ntnu20.imt3673.group4.aves.weather.WeatherUtil
+import java.io.FileNotFoundException
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -41,9 +43,6 @@ class AddObservationFragment : Fragment() {
     private lateinit var currentPhotoPath :String
     private val requestCode = 42
 
-    companion object {
-        fun newInstance() = AddObservationFragment()
-    }
 
     private val viewModel: AddObservationViewModel by viewModels()
     private lateinit var binding: FragmentAddObservationBinding
@@ -59,11 +58,16 @@ class AddObservationFragment : Fragment() {
         return binding.root
     }
 
-    private suspend fun getWeatherData(latitude: Double, longitude: Double) = run {
-        withContext(Dispatchers.IO) {
-            val dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
-            viewModel.setWeatherData(dataPoint!!)
+    private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {7
+        var dataPoint: WeatherDataPoint? = null
+        while (dataPoint == null) {
+            try {
+                withContext(Dispatchers.IO) {
+                    dataPoint =  WeatherUtil.getRecentFrom(latitude, longitude)
+                }
+            } catch (e: FileNotFoundException) {}
         }
+        return dataPoint
     }
 
     private fun getLocationAndWeather() = lifecycleScope.launch {
@@ -73,6 +77,7 @@ class AddObservationFragment : Fragment() {
             val latitude = LocationUtility.latitude
             val longitude = LocationUtility.longitude
             viewModel.setLocation(latitude, longitude)
+            viewModel.setWeatherData(getWeatherData(latitude, longitude)!!)
         } else {
             Log.d("AVES", "havePermission is false")
         }
@@ -81,6 +86,7 @@ class AddObservationFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val useLocation = sharedPreferences.getBoolean("pref_location", false)
@@ -167,13 +173,9 @@ class AddObservationFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == requestCode && resultCode == Activity.RESULT_OK) {
             image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
-
-            // Create card, set information on card from parameter
-            uploadObservation()
+            viewModel.getImageViewPath(currentPhotoPath)
+            viewModel.addObservation()
         }
     }
 
-    private fun uploadObservation() {
-
-    }
 }

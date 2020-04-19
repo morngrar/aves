@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel" />
@@ -24,11 +23,10 @@
                 android:layout_width="328dp"
                 android:layout_height="338dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_image"
+                android:src="@{vm.getImage , default=@drawable/ic_image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <Button
                 android:id="@+id/button"
@@ -36,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:enabled="@{vm.validated}"
+                android:onClick="@{vm::handleClick}"
                 android:text="@string/lbl_btn_add_observation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +58,9 @@
                     android:id="@+id/txt_bird_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_bird_name"
-                    android:inputType="textAutoComplete" />
+                    android:inputType="textAutoComplete"
+                    android:text="@={vm.birdName}"
+                    android:hint="@string/hint_bird_name" />
 
                 <TextView
                     android:id="@+id/txt_location"
@@ -82,8 +82,9 @@
                     android:id="@+id/txt_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.time}"
+                    android:text="@{vm.timeString}"
                     android:textSize="18sp" />
+
 
             </LinearLayout>
 
