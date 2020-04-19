@@ -19,6 +19,9 @@
         <action
             android:id="@+id/next_action"
             app:destination="@id/dest_observation" />
+        <action
+            android:id="@+id/action_dest_home_to_addObservationFragment2"
+            app:destination="@id/dest_add_observation" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -48,4 +51,8 @@
             android:id="@+id/actionDestFragmentProfile"
             app:destination="@id/dest_profile" />
     </fragment>
+    <fragment
+        android:id="@+id/dest_add_observation"
+        android:name="ntnu20.imt3673.group4.aves.AddObservationFragment"
+        android:label="Add new observation" />
 </navigation>

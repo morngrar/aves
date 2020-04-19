@@ -28,6 +28,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -58,10 +63,11 @@ android {
         //ignoreWarnings true
     }
 
+
 }
 
 tasks.withType(Test) {
-     systemProperty "robolectric.logging", "stdout"
+    systemProperty "robolectric.logging", "stdout"
 }
 
 dependencies {
