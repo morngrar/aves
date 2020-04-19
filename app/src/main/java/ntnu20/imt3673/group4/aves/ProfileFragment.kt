@@ -1,5 +1,7 @@
 package ntnu20.imt3673.group4.aves
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
+import java.io.File
 
 
 class ProfileFragment : Fragment() {
@@ -28,5 +31,7 @@ class ProfileFragment : Fragment() {
             val actionDestFragmentEditProfile = ProfileFragmentDirections.actionDestFragmentEditProfile()
             Navigation.findNavController(it).navigate(actionDestFragmentEditProfile)
         }
+
     }
+
 }
