@@ -1,6 +1,8 @@
 package ntnu20.imt3673.group4.aves
 
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -10,7 +12,8 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
-import com.google.android.material.navigation.NavigationView
+import ntnu20.imt3673.group4.aves.location.LocationUtility
+import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
 
 /**
@@ -37,10 +40,63 @@ class MainActivity : AppCompatActivity() {
 
         /* Read preferences */
         // TODO: Use these values to change behaviour in app. Enable/disable location etc
-        // val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        // var useLocation = sharedPreferences.getBoolean("pref_location", false)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+
+        // Ensuring permissions for location -- if using location
+        when {
+            PermissionUtility.haveFineLocationPermission(this) -> {
+                when {
+                    PermissionUtility.locationIsEnabled(this) -> {
+                        LocationUtility.configureLocationListener(this)
+                    }
+                    else -> {
+                        PermissionUtility.showGPSAlertDialog(this)
+                    }
+                }
+            }
+            else -> {
+                PermissionUtility.requestFineLocationPermission(
+                    this,
+                    LocationUtility.LOCATION_PERMISSION_REQUEST_CODE
+                )
+            }
+        }
 
     }
+
+    /** handling permission result for location */
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            LocationUtility.LOCATION_PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    when {
+                        PermissionUtility.locationIsEnabled(this) -> {
+                            LocationUtility.configureLocationListener(this)
+                        }
+                        else -> {
+                            PermissionUtility.showGPSAlertDialog(this)
+                        }
+                    }
+                }
+            }
+            else -> {
+                Toast.makeText(
+                    this,
+                    "Don't have location permission",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+
     /** Sets up the navigation menu to their respective dests*/
     private fun setUpNavigationMenu(navController: NavController) {
         navigationView?.let {
@@ -55,6 +111,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed();
         }
     }
+
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 }
 

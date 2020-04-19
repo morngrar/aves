@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ntnu20.imt3673.group4.aves.R
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import java.util.*
 
@@ -16,13 +17,19 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     val gotLocation: LiveData<Boolean>
         get() = _gotLocation
 
-    private var _location = MutableLiveData("fetching...")
+    private val fetchingString = application.resources.getString(R.string.str_retrieving)
+    private var _location = MutableLiveData(fetchingString)
     val location: LiveData<String>
         get() = _location
 
     fun setLocation(latitude: Double, longitude: Double) {
         _location.value = "$latitude, $longitude"
         _gotLocation.value = true
+    }
+
+    private val notPermittedString = application.resources.getString(R.string.str_not_permitted)
+    fun locationNotUsed() {
+        _location.value = notPermittedString
     }
 
     private var _gotWeather = MutableLiveData(false)

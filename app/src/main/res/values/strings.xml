@@ -23,4 +23,5 @@
     <string name="lbl_weather_data">Weather data: %1s</string>
     <string name="str_done">Done!</string>
     <string name="str_retrieving">Retrieving…</string>
+    <string name="str_not_permitted">Not enabled in Aves settings.</string>
 </resources>

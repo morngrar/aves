@@ -7,16 +7,23 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 
 object PermissionUtility {
+
     fun haveFineLocationPermission(ctx: Context) : Boolean {
         return ContextCompat.checkSelfPermission(
             ctx,
             Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    fun haveInternetPermission(ctx: Context) : Boolean {
+        return ContextCompat.checkSelfPermission(
+            ctx,
+            Manifest.permission.INTERNET
         ) == PackageManager.PERMISSION_GRANTED
     }
 
@@ -26,6 +33,14 @@ object PermissionUtility {
 
         return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    }
+
+    fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
+        ActivityCompat.requestPermissions(
+            activity,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            reqID
+        )
     }
 
     fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {

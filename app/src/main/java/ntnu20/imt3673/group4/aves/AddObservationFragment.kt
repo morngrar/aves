@@ -2,6 +2,7 @@ package ntnu20.imt3673.group4.aves
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +11,16 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ntnu20.imt3673.group4.aves.databinding.FragmentAddObservationBinding
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 import ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel
+import ntnu20.imt3673.group4.aves.weather.WeatherUtil
 
 
 class AddObservationFragment : Fragment() {
@@ -37,64 +43,36 @@ class AddObservationFragment : Fragment() {
         return binding.root
     }
 
-    private fun getLocationAndWeather() = lifecycleScope.launch {
+    private suspend fun getWeatherData(latitude: Double, longitude: Double) = run {
+        withContext(Dispatchers.IO) {
+            val dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
+            viewModel.setWeatherData(dataPoint!!)
+        }
+    }
 
+    private fun getLocationAndWeather() = lifecycleScope.launch {
+        delay(1000)
+        if (PermissionUtility.haveFineLocationPermission(requireContext())) {
+            Log.d("AVES", "havePermission")
+            val latitude = LocationUtility.latitude
+            val longitude = LocationUtility.longitude
+            viewModel.setLocation(latitude, longitude)
+        } else {
+            Log.d("AVES", "havePermission is false")
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        // Ensuring permissions
-        when {
-            PermissionUtility.haveFineLocationPermission(requireContext()) -> {
-                when {
-                    PermissionUtility.locationIsEnabled(requireContext()) -> {
-                        LocationUtility.configureLocationListener(requireContext())
-                    }
-                    else -> {
-                        PermissionUtility.showGPSAlertDialog(requireContext())
-                    }
-                }
-            }
-            else -> {
-                PermissionUtility.requestFineLocationPermission(
-                    this.requireActivity(),
-                    LocationUtility.LOCATION_PERMISSION_REQUEST_CODE
-                )
-            }
-        }
 
-    }
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val useLocation = sharedPreferences.getBoolean("pref_location", false)
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        when (requestCode) {
-            LocationUtility.LOCATION_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    when {
-                        PermissionUtility.locationIsEnabled(requireContext()) -> {
-                            LocationUtility.configureLocationListener(requireContext())
-                        }
-                        else -> {
-                            PermissionUtility.showGPSAlertDialog(requireContext())
-                        }
-                    }
-                }
-            }
-            else -> {
-                Toast.makeText(
-                    requireContext(),
-                    "Don't have location permission",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+        if (!useLocation) {
+            viewModel.locationNotUsed()
+        } else {
+            getLocationAndWeather()
         }
     }
-
-
 }
