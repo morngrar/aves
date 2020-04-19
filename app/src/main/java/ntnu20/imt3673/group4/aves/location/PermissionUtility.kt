@@ -43,14 +43,6 @@ object PermissionUtility {
         )
     }
 
-    fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
-        ActivityCompat.requestPermissions(
-            activity,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            reqID
-        )
-    }
-
     fun showGPSAlertDialog(ctx: Context) {
         AlertDialog.Builder(ctx)
             .setTitle("Enable GPS")

@@ -2,28 +2,18 @@ package ntnu20.imt3673.group4.aves
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-<<<<<<< HEAD
-=======
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
->>>>>>> add-observation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-<<<<<<< HEAD
-import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
-=======
 import androidx.preference.PreferenceManager
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
->>>>>>> add-observation
 
 
 /**
@@ -52,8 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         /* Read preferences */
         // TODO: Use these values to change behaviour in app. Enable/disable location etc
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+//        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+//        val useLocation = sharedPreferences.getBoolean("pref_location", false)
 
         // Ensuring permissions for location -- if using location
         when {
@@ -77,8 +67,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-<<<<<<< HEAD
-=======
     /** handling permission result for location */
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -109,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
->>>>>>> add-observation
 
 
     /** Sets up the navigation menu to their respective dests*/

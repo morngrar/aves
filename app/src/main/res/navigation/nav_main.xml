@@ -17,9 +17,6 @@
             android:id="@+id/action_dest_fragment_activity_main_to_settingsFragment"
             app:destination="@id/dest_settings" />
         <action
-            android:id="@+id/next_action"
-            app:destination="@id/dest_observation" />
-        <action
             android:id="@+id/action_dest_home_to_addObservationFragment2"
             app:destination="@id/dest_add_observation" />
     </fragment>
@@ -35,14 +32,6 @@
         android:id="@+id/dest_settings"
         android:name="ntnu20.imt3673.group4.aves.SettingsFragment"
         android:label="SettingsFragment" />
-    <fragment
-        android:id="@+id/dest_observation"
-        android:name="ntnu20.imt3673.group4.aves.ObservationFragment"
-        android:label="ObservationFragment" >
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/dest_home" />
-    </fragment>
     <fragment
         android:id="@+id/destFragmentEditProfile"
         android:name="ntnu20.imt3673.group4.aves.FragmentEditProfile"

@@ -16,9 +16,7 @@
     <string name="button_text_save">Save</string>
     <string name="button_text_cancel">Cancel</string>
     <string name="edit_avatar">Click to upload new</string>
-<<<<<<< HEAD
     <string name="the_title_of_an_observation">The Title of an Observation</string>
-=======
     <string name="hint_bird_name">Bird name</string>
     <string name="lbl_location">Location: %1$s</string>
     <string name="lbl_btn_add_observation">Add observation</string>
@@ -27,5 +25,4 @@
     <string name="str_done">Done!</string>
     <string name="str_retrieving">Retrieving…</string>
     <string name="str_not_permitted">Not enabled in Aves settings.</string>
->>>>>>> add-observation
 </resources>
