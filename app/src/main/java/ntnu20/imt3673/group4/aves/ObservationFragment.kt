@@ -57,7 +57,8 @@ class ObservationFragment : Fragment() {
         btn_share.setOnClickListener {
             if(image_view.drawable != null) {
                 // Save the image to gallery
-                galleryAddPic()
+//                galleryAddPic()
+                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Take a picture ", Toast.LENGTH_SHORT).show()
             }
@@ -117,7 +118,8 @@ class ObservationFragment : Fragment() {
     private fun createImageFile(): File {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File? =  requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val storageDir: File? = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        Log.d("AAAAAAAA",  requireContext().filesDir.toString())
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */
@@ -128,22 +130,28 @@ class ObservationFragment : Fragment() {
         }
     }
 
+    /**
+     * Set the image captured by the camera to the image_view displayed in the xml file
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == requestCode && resultCode == Activity.RESULT_OK) {
             image_view.setImageURI(Uri.parse(currentPhotoPath))
         }
     }
 
-    private fun galleryAddPic() {
-        Intent(Intent.ACTION_VIEW).also { mediaScanIntent ->
-            val ctx = requireContext()
-            mediaScanIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            val f = File(currentPhotoPath)
-            mediaScanIntent.data = FileProvider.getUriForFile(ctx, ctx.applicationContext.packageName + ".provider", f)
-            requireContext().sendBroadcast(mediaScanIntent)
-            Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    /**
+//     * galleryAddPic adds the file to
+//     */
+//    private fun galleryAddPic() {
+//        Intent(Intent.ACTION_VIEW).also { mediaScanIntent ->
+//            val ctx = requireContext()
+//            mediaScanIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//            val f = File(currentPhotoPath)
+//            mediaScanIntent.data = FileProvider.getUriForFile(ctx, ctx.applicationContext.packageName + ".provider", f)
+//            requireContext().sendBroadcast(mediaScanIntent)
+//            Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 }
 
 
