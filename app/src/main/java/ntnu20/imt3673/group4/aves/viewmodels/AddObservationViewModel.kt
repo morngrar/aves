@@ -1,10 +1,15 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import ntnu20.imt3673.group4.aves.R
+import ntnu20.imt3673.group4.aves.data.ObservationData
+import ntnu20.imt3673.group4.aves.data.ObservationDatabase
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import java.util.*
 
@@ -22,7 +27,9 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     val location: LiveData<String>
         get() = _location
 
-    fun setLocation(latitude: Double, longitude: Double) {
+    fun setLocation(lat: Double, lon: Double) {
+        latitude = lat
+        longitude = lon
         _location.value = "$latitude, $longitude"
         _gotLocation.value = true
     }
@@ -31,6 +38,9 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     fun locationNotUsed() {
         _location.value = notPermittedString
     }
+
+    var birdName = MutableLiveData("")
+
 
     private var _gotWeather = MutableLiveData(false)
     val gotWeather: LiveData<Boolean>
@@ -42,7 +52,44 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotWeather.value = true
     }
 
-    var validated = false
+    val validated = liveData {
+        var bool = false
+        while(true) {
+            emit(bool)
+            bool = _gotLocation.value!! && _gotWeather.value!!
+            bool = bool && !birdName.value.isNullOrBlank()
+            //TODO: Check for image path as well
+            delay(100)
 
-    val time = Date().toString()
+            Log.d("AVES-VALIDATOR", "running validated coroutine")
+            Log.d("AVES-VALIDATOR", "${_gotLocation.value}, ${_gotWeather.value}")
+            Log.d("AVES-VALIDATOR", "Bird name: ${birdName.value}")
+
+        }
+    }
+
+    val time = Date()
+    val timeString = time.toString()
+
+    private val db = ObservationDatabase.getInstance(application)
+    fun handleClick(view: View) {
+        addObservation()
+    }
+    fun addObservation() = viewModelScope.launch {
+        db.observations().insertObservation(
+            ObservationData(
+                0,
+                birdName.value!!,
+                "NOT IMPLEMENTED", //TODO: get image path and add here
+                time.time,
+                latitude!!,
+                longitude!!,
+                weatherDataPoint!!.precipitationValue!!,
+                weatherDataPoint!!.windSpeed!!,
+                weatherDataPoint!!.cloudiness!!,
+                weatherDataPoint!!.pressure!!
+            )
+        )
+        Toast.makeText(getApplication(), "Added observation to database!", Toast.LENGTH_LONG).show()
+    }
 }

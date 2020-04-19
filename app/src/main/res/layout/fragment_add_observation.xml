@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:enabled="@{vm.validated}"
+                android:onClick="@{vm::handleClick}"
                 android:text="@string/lbl_btn_add_observation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textAutoComplete"
+                    android:text="@={vm.birdName}"
                     android:hint="@string/hint_bird_name" />
 
                 <TextView
@@ -80,7 +82,7 @@
                     android:id="@+id/txt_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.time}"
+                    android:text="@{vm.timeString}"
                     android:textSize="18sp" />
 
 

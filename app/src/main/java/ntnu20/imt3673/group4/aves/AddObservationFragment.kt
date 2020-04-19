@@ -20,6 +20,7 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
 import ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import ntnu20.imt3673.group4.aves.weather.WeatherUtil
+import java.io.FileNotFoundException
 
 
 class AddObservationFragment : Fragment() {
@@ -40,8 +41,12 @@ class AddObservationFragment : Fragment() {
 
     private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {7
         var dataPoint: WeatherDataPoint? = null
-        withContext(Dispatchers.IO) {
-            dataPoint =  WeatherUtil.getRecentFrom(latitude, longitude)
+        while (dataPoint == null) {
+            try {
+                withContext(Dispatchers.IO) {
+                    dataPoint =  WeatherUtil.getRecentFrom(latitude, longitude)
+                }
+            } catch (e: FileNotFoundException) {}
         }
         return dataPoint
     }
