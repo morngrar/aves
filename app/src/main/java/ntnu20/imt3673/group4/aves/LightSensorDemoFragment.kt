@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_light_sensor_demo.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentLightSensorDemoBinding
 
-
+/** Fragment to demonstrate usage of the light sensor */
 class LightSensorDemoFragment : Fragment(), SensorEventListener {
 
     private var light : Sensor? = null
@@ -25,7 +25,7 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /* Light sensor */
+        /* Light sensor service */
         sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         light = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
 
@@ -39,6 +39,7 @@ class LightSensorDemoFragment : Fragment(), SensorEventListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /* Hide text by default so it is only shown when the correct light level is present */
         text_light.visibility = View.INVISIBLE
         text_dark.visibility = View.INVISIBLE
     }
