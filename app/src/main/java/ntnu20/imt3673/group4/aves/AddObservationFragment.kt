@@ -57,7 +57,7 @@ class AddObservationFragment : Fragment() {
         return binding.root
     }
 
-    private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {7
+    private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {
         var dataPoint: WeatherDataPoint? = null
         while (dataPoint == null) {
             try {
