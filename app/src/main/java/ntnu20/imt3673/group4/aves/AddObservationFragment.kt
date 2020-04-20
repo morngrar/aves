@@ -66,6 +66,7 @@ class AddObservationFragment : Fragment() {
         latitude: Double,
         longitude: Double
     ): WeatherDataPoint? = run {
+
         var dataPoint: WeatherDataPoint? = null
         while (dataPoint == null) {
             try {
