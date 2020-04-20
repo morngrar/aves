@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="bgColor">@color/windowBackground</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="textColor">@color/textColorPrimary</item>
@@ -22,7 +21,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="bgColor">@color/windowBackgroundDark</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
         <item name="textColor">@color/textColorPrimaryDark</item>

@@ -1,5 +1,6 @@
 package ntnu20.imt3673.group4.aves.adapters
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,13 +28,14 @@ class ObservationAdapter : ListAdapter<ObservationData, ObservationAdapter.ViewH
 
 
     /** Adds variable bindings to the UI elements */
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val observation = getItem(position)
 
         holder.binding.lblCardBirdName.text = observation.birdName
         holder.binding.lblCardTime.text = Date(observation.time).toString()
         holder.binding.lblCardLocation.text = "Loc: %4.4f, %4.4f".format(observation.latitude, observation.longitude)
-        holder.binding.lblCardCloudiness.text = "Cloud cover: ${observation.cloudiness}%"
+        holder.binding.lblCardCloudiness.text = "Cloud cover: ${observation.cloudiness}"
         holder.binding.lblCardPressure.text = "Pressure: ${observation.pressure} hPa"
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
