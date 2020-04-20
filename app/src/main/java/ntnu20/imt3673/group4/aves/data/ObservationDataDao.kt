@@ -5,6 +5,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 
+/**
+ * Dao defines a function interface against database queries
+ */
 @Dao
 interface ObservationDataDao {
     @Query("SELECT * FROM observations ORDER BY time DESC")

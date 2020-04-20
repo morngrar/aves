@@ -38,10 +38,10 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+/** Fragment for adding an observation */
 class AddObservationFragment : Fragment() {
 
-    private lateinit var currentPhotoPath :String
+    private lateinit var currentPhotoPath: String
     private val requestCode = 42
     private val viewModel: AddObservationViewModel by viewModels()
     private lateinit var binding: FragmentAddObservationBinding
@@ -50,25 +50,35 @@ class AddObservationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_add_observation, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_add_observation,
+            container,
+            false
+        )
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
         return binding.root
     }
 
-    private suspend fun getWeatherData(latitude: Double, longitude: Double): WeatherDataPoint? = run {7
+    /** Gets the weather data from met.no api in a background thread */
+    private suspend fun getWeatherData(
+        latitude: Double,
+        longitude: Double
+    ): WeatherDataPoint? = run {
         var dataPoint: WeatherDataPoint? = null
         while (dataPoint == null) {
             try {
                 withContext(Dispatchers.IO) {
-                    dataPoint =  WeatherUtil.getRecentFrom(latitude, longitude)
+                    dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
                 }
-            } catch (e: FileNotFoundException) {}
+            } catch (e: FileNotFoundException) {
+            }
         }
         return dataPoint
     }
 
+    /** Gets the location and weatherdata consecutively in the background */
     private fun getLocationAndWeather() = lifecycleScope.launch {
         delay(1000)
         if (PermissionUtility.haveFineLocationPermission(requireContext())) {
@@ -86,10 +96,11 @@ class AddObservationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val useLocation = sharedPreferences.getBoolean("pref_location", false)
 
+        //Only try to get location and weather if the user hasn't disabled this in settings
+        //TODO:remove this check in final version
         if (!useLocation) {
             viewModel.locationNotUsed()
         } else {
@@ -130,6 +141,7 @@ class AddObservationFragment : Fragment() {
         }
     }
 
+    /** Takes a picture, using the camera app */
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             // Ensure that there's a camera activity to handle the intent
@@ -156,6 +168,7 @@ class AddObservationFragment : Fragment() {
         }
     }
 
+    /** Creates an image file from the result of the camera intent */
     @SuppressLint("SimpleDateFormat")
     @Throws(IOException::class)
     private fun createImageFile(): File {
@@ -176,7 +189,7 @@ class AddObservationFragment : Fragment() {
      * Set the image captured by the camera to the image_view_observation displayed in the xml file
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(requestCode == requestCode && resultCode == Activity.RESULT_OK) {
+        if (requestCode == requestCode && resultCode == Activity.RESULT_OK) {
             image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
             viewModel.getImageViewPath(currentPhotoPath)
         }

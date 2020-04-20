@@ -11,8 +11,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 
+/** Utility for requesting Location premissions */
 object PermissionUtility {
 
+    /** Checks if the permission is granted */
     fun haveFineLocationPermission(ctx: Context) : Boolean {
         return ContextCompat.checkSelfPermission(
             ctx,
@@ -20,6 +22,7 @@ object PermissionUtility {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    /** Checks if location is enabled by the user */
     fun locationIsEnabled(ctx: Context) : Boolean {
         val locationManager: LocationManager =
             ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -28,6 +31,7 @@ object PermissionUtility {
                 || locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
+    /** Requests the needed location permission */
     fun requestFineLocationPermission(activity: FragmentActivity, reqID: Int) {
         ActivityCompat.requestPermissions(
             activity,
@@ -36,6 +40,7 @@ object PermissionUtility {
         )
     }
 
+    /** Shows an alertdialog, asking for the permission */
     fun showGPSAlertDialog(ctx: Context) {
         AlertDialog.Builder(ctx)
             .setTitle("Enable GPS")

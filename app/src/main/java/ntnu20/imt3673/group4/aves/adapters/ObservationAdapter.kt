@@ -26,6 +26,7 @@ class ObservationAdapter : ListAdapter<ObservationData, ObservationAdapter.ViewH
     }
 
 
+    /** Adds variable bindings to the UI elements */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val observation = getItem(position)
 
