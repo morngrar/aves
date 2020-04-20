@@ -10,20 +10,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_activity_main.*
 import kotlinx.android.synthetic.main.fragment_light_sensor_demo.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentLightSensorDemoBinding
-import java.io.IOException
 
 
 class LightSensorDemoFragment : Fragment(), SensorEventListener {

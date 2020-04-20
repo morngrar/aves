@@ -2,9 +2,7 @@ package ntnu20.imt3673.group4.aves
 
 import ntnu20.imt3673.group4.aves.weather.ZuluUtil
 import org.junit.Test
-
 import org.junit.Assert.*
-import java.net.URL
 import java.util.*
 
 /**

@@ -1,7 +1,6 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
@@ -58,11 +57,6 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
             bool = _gotLocation.value!! && _gotWeather.value!!
             bool = bool && !birdName.value.isNullOrBlank()
             delay(100)
-
-            Log.d("AVES-VALIDATOR", "running validated coroutine")
-            Log.d("AVES-VALIDATOR", "${_gotLocation.value}, ${_gotWeather.value}")
-            Log.d("AVES-VALIDATOR", "Bird name: ${birdName.value}")
-
         }
     }
 

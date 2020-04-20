@@ -56,11 +56,6 @@ class MainActivity : AppCompatActivity() {
         /* Hook up drawer with nav controller */
         navigationView.setupWithNavController(navController)
 
-        /* Read preferences */
-/*
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val useLocation = sharedPreferences.getBoolean("pref_location", false)
-*/
 
         // Ensuring permissions for location -- if using location
         when {
