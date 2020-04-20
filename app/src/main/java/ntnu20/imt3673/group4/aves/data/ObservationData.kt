@@ -3,6 +3,7 @@ package ntnu20.imt3673.group4.aves.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/** Data type for storing observations into database */
 @Entity(tableName = "observations")
 data class ObservationData(
     @PrimaryKey(autoGenerate = true)

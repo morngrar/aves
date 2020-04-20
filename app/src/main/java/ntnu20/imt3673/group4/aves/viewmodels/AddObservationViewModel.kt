@@ -11,8 +11,10 @@ import ntnu20.imt3673.group4.aves.data.ObservationDatabase
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import java.util.*
 
+/** ViewModel for the AddObservation fragment */
 class AddObservationViewModel(application: Application) : AndroidViewModel(application) {
 
+    /** Location-related variables */
     private var latitude: Double? = null
     private var longitude: Double? = null
 
@@ -25,6 +27,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     val location: LiveData<String>
         get() = _location
 
+    /** Setter for location will also turn on flags changing text color */
     fun setLocation(lat: Double, lon: Double) {
         latitude = lat
         longitude = lon
@@ -32,24 +35,31 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotLocation.value = true
     }
 
+    /** Handle for changing the text if the user has turned off location in the app settings */
+    // TODO: remove this in final version
     private val notPermittedString = application.resources.getString(R.string.str_not_permitted)
     fun locationNotUsed() {
         _location.value = notPermittedString
     }
 
-    var birdName = MutableLiveData("")
-
-
+    /** Weather-related variables */
     private var _gotWeather = MutableLiveData(false)
     val gotWeather: LiveData<Boolean>
         get() = _gotWeather
-    
     private var weatherDataPoint: WeatherDataPoint? = null
     fun setWeatherData(dataPoint: WeatherDataPoint) {
         weatherDataPoint = dataPoint
         _gotWeather.value = true
     }
 
+    /** The bird's name */
+    var birdName = MutableLiveData("") //TODO: change in final version
+
+    /** The current time */
+    val time = Date()
+    val timeString = time.toString()
+
+    /** Validation of data for enabling the add button */
     val validated = liveData {
         var bool = false
         while(true) {
@@ -60,13 +70,11 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         }
     }
 
+    /** Adding the data to db */
     private var path: String? = null
     fun getImageViewPath(imgPath: String){
         path = imgPath
     }
-
-    val time = Date()
-    val timeString = time.toString()
 
     private val db = ObservationDatabase.getInstance(application)
     fun addObservation() = viewModelScope.launch {
