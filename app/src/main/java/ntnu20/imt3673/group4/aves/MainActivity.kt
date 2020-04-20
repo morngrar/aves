@@ -23,7 +23,6 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
  */
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         /* Read preferences */
@@ -76,7 +75,6 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-
     }
 
     /** handling permission result for location */
@@ -109,7 +107,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     /** Sets up the navigation menu to their respective dests*/
     private fun setUpNavigationMenu(navController: NavController) {

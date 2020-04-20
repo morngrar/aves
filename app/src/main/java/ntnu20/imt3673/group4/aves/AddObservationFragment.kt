@@ -43,8 +43,6 @@ class AddObservationFragment : Fragment() {
 
     private lateinit var currentPhotoPath :String
     private val requestCode = 42
-
-
     private val viewModel: AddObservationViewModel by viewModels()
     private lateinit var binding: FragmentAddObservationBinding
 
@@ -183,5 +181,4 @@ class AddObservationFragment : Fragment() {
             viewModel.getImageViewPath(currentPhotoPath)
         }
     }
-
 }

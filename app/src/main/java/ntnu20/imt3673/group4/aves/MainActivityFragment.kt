@@ -15,7 +15,6 @@ import ntnu20.imt3673.group4.aves.viewmodels.MainFragmentViewModel
 
 class MainActivityFragment : Fragment() {
 
-
     private val viewModel: MainFragmentViewModel by viewModels()
     private lateinit var binding : FragmentActivityMainBinding
 

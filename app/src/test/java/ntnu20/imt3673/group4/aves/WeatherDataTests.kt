@@ -9,7 +9,6 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-//@Config(sdk = [Build.VERSION_CODES.O_MR1])
 class WeatherDataTests {
 
     @Test
