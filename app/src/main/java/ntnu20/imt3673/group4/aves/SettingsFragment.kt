@@ -6,7 +6,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 
-
+/** Fragment for changing settings in the app */
 class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -27,6 +27,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
             }
 
+        /** Button to apply changes in the settings */
         val restartButton: Preference? = findPreference("btn_restart_app")
         restartButton!!.onPreferenceClickListener =
             Preference.OnPreferenceClickListener { //code for what you want it to do
