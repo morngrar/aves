@@ -11,7 +11,7 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 
-
+/** Fragment for changing profile information */
 class FragmentEditProfile : Fragment() {
 
     private lateinit var views: FragmentProfileBinding
@@ -24,15 +24,17 @@ class FragmentEditProfile : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /* Change avatar when clicking the current avatar */
         avatar.setOnClickListener{
-            // TODO: Change avatar
             pickImageFromGallery();
         }
 
+        /* Change avatar when clicking the text as well */
         text_change_avatar.setOnClickListener {
             pickImageFromGallery();
         }
 
+        /* Cancel editing profile */
         btn_cancel.setOnClickListener{
             // clear text fields
             //edit_real_name.text!!.clear()
@@ -44,13 +46,12 @@ class FragmentEditProfile : Fragment() {
             Navigation.findNavController(it).navigate(actionDestFragmentProfile)
         }
 
+        /* Save changes */
         btn_save.setOnClickListener{
             // TODO: save text field data and avatar
 
             // clear text fields
             //edit_real_name.text!!.clear()
-
-            // TODO: Clear avatar change?
 
             // change fragment
             val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
@@ -58,6 +59,7 @@ class FragmentEditProfile : Fragment() {
         }
     }
 
+    /** Pick image from gallery to replace current avatar */
     private fun pickImageFromGallery() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
@@ -65,6 +67,7 @@ class FragmentEditProfile : Fragment() {
         startActivityForResult(intent, 1000)
     }
 
+    /** Replace avatar with the chosen image */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == 1000){
             avatar.setImageURI(data?.data)
