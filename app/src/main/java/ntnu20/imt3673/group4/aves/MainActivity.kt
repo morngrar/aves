@@ -3,16 +3,15 @@ package ntnu20.imt3673.group4.aves
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
-import android.util.Log
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import kotlinx.android.synthetic.main.activity_main.*
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
@@ -32,10 +31,8 @@ class MainActivity : AppCompatActivity() {
         /* Set app theme at startup */
         val useDarkMode = sharedPreferences.getBoolean("pref_theme", false)
         if (useDarkMode) {
-            Log.d("darkMode", "true")
             setTheme(R.style.AppThemeDark)
         } else {
-            Log.d("darkMode", "false")
             setTheme(R.style.AppThemeLight)
         }
 
