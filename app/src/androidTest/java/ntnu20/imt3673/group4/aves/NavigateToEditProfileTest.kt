@@ -16,13 +16,14 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class ProfileRealNameTest {
+class NavigateToEditProfileTest {
 
     @Rule
     @JvmField
@@ -36,7 +37,7 @@ class ProfileRealNameTest {
         )
 
     @Test
-    fun profileRealNameTest() {
+    fun navigateToEditProfileTest() {
         val appCompatImageButton = onView(
             allOf(
                 withContentDescription("Open navigation drawer"),
@@ -72,24 +73,38 @@ class ProfileRealNameTest {
         )
         navigationMenuItemView.perform(click())
 
-        Thread.sleep(3000)
-        val textView = onView(
+        val appCompatButton = onView(
             allOf(
-                withId(R.id.txt_real_name), withText("Real Name"),
+                withId(R.id.btn_edit_profile), withText("Edit Profile"),
                 childAtPosition(
                     allOf(
-                        withId(R.id.linearLayout),
+                        withId(R.id.profile_view),
                         childAtPosition(
-                            withId(R.id.profile_view),
-                            1
+                            withId(R.id.nav_host_fragment),
+                            0
                         )
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatButton.perform(click())
+
+        val editText = onView(
+            allOf(
+                withId(R.id.edit_real_name),
+                childAtPosition(
+                    childAtPosition(
+                        IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java),
+                        0
                     ),
                     0
                 ),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Real Name")))
+        editText.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(
