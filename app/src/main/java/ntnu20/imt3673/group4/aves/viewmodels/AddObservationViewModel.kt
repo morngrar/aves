@@ -2,12 +2,8 @@ package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
 import android.util.Log
-import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
-import androidx.navigation.Navigation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ntnu20.imt3673.group4.aves.R
