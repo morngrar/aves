@@ -1,5 +1,6 @@
 package ntnu20.imt3673.group4.aves.weather
 
+import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -9,6 +10,7 @@ object ZuluUtil {
 
     private val FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
+    @SuppressLint("SimpleDateFormat")
     private fun _getFormatter() : SimpleDateFormat {
         val formatter = SimpleDateFormat(FORMAT_STRING)
         formatter.timeZone = TimeZone.getTimeZone("UTC")

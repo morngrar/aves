@@ -26,7 +26,8 @@
                 android:src="@{@drawable/ic_image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/image_of_observation" />
 
             <Button
                 android:id="@+id/btn_add_observation"
@@ -59,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textAutoComplete"
                     android:text="@={vm.birdName}"
+                    android:autofillHints="@string/hint_bird_name"
                     android:hint="@string/hint_bird_name" />
 
                 <TextView
