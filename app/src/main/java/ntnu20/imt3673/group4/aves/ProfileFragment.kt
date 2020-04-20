@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_profile.*
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 
-
+/** Fragment for viewing the user's profile */
 class ProfileFragment : Fragment() {
 
     private lateinit var views: FragmentProfileBinding
@@ -22,6 +22,7 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /* Edit profile */
         btn_edit_profile.setOnClickListener {
             val actionDestFragmentEditProfile = ProfileFragmentDirections.actionDestFragmentEditProfile()
             Navigation.findNavController(it).navigate(actionDestFragmentEditProfile)
