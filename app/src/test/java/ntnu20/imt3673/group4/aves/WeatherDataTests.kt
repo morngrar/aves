@@ -47,16 +47,4 @@ class WeatherDataTests {
             got
         )
     }
-
-    @Test
-    fun testing_url_getting() {
-        val latitude: Double = 60.10
-        val longitude: Double = 9.58
-        val dataPoint = WeatherUtil.getRecentFrom(latitude, longitude)
-        assertEquals(
-            "gotten datapoint should match known value",
-            "496",
-            dataPoint?.altitude
-        )
-    }
 }
