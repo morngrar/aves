@@ -17,8 +17,8 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
 
 
 /**
- * This is an example of how the location utility is to be used. It is important that this is
- * used in a short-lived activity for registering gps data, or it will affect battery life.
+ * Main activity sets up navigation drawer and loads shared preferences at startup.
+ * Ensures that correct permissions are given.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         /* Read preferences */
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        // var useLocation = sharedPreferences.getBoolean("pref_location", false)
 
         /* Set app theme at startup */
         val useDarkMode = sharedPreferences.getBoolean("pref_theme", false)
@@ -105,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** Sets up the navigation menu to their respective dests*/
+    /** Sets up the navigation menu to their respective destinations */
     private fun setUpNavigationMenu(navController: NavController) {
         navigationView?.let {
             NavigationUI.setupWithNavController(it, navController)
