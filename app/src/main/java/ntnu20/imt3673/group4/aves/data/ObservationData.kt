@@ -9,6 +9,7 @@ data class ObservationData(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     val birdName: String,
+    var description: String?,
     val imagePath: String,
     val time: Long,
     val latitude: Double,

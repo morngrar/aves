@@ -108,6 +108,10 @@ class AddObservationFragment : Fragment() {
             getLocationAndWeather()
         }
 
+        btn_gallery.setOnClickListener {
+            pickImageFromGallery()
+        }
+
         //Button to capture image, checks permission first
         btn_capture.setOnClickListener {
             checkPermission()
@@ -188,11 +192,24 @@ class AddObservationFragment : Fragment() {
 
     /**
      * Set the image captured by the camera to the image_view_observation displayed in the xml file
+     * Or use the image picked from gallery
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == requestCode && resultCode == Activity.RESULT_OK) {
-            image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
-            viewModel.getImageViewPath(currentPhotoPath)
+            if(data?.type != "image/*") {   // If the user captured an image
+                image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
+                viewModel.getImageViewPath(currentPhotoPath)
+            } else {
+                image_view_observation.setImageURI(data.data)
+            }
         }
+    }
+
+    /** Pick image from gallery */
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, requestCode)
     }
 }
