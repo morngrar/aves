@@ -62,6 +62,14 @@
                     android:text="@={vm.birdName}"
                     android:autofillHints="@string/hint_bird_name"
                     android:hint="@string/hint_bird_name" />
+                <EditText
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoComplete"
+                    android:text="@={vm.description}"
+                    android:autofillHints="@string/hint_description"
+                    android:hint="@string/hint_description" />
 
                 <TextView
                     android:id="@+id/txt_location"
@@ -86,7 +94,6 @@
                     android:text="@{vm.timeString}"
                     android:textSize="18sp" />
 
-
             </LinearLayout>
 
             <Button
@@ -96,8 +103,22 @@
                 android:background="@drawable/ic_camera_alt_black_24dp"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                 app:layout_constraintEnd_toEndOf="@+id/image_view_observation"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="@+id/image_view_observation"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_observation" />
+                app:layout_constraintTop_toBottomOf="@+id/image_view_observation"
+                app:layout_constraintVertical_bias="0.461" />
+
+            <Button
+                android:id="@+id/btn_gallery"
+                android:layout_width="61dp"
+                android:layout_height="57dp"
+                android:background="@drawable/ic_gallery"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/image_view_observation"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="@+id/image_view_observation"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_observation"
+                app:layout_constraintVertical_bias="0.461" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

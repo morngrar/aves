@@ -54,6 +54,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
 
     /** The bird's name */
     var birdName = MutableLiveData("") //TODO: change in final version
+    var description: String? = null
 
     /** The current time */
     val time = Date()
@@ -86,6 +87,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
             ObservationData(
                 0,
                 birdName.value!!,
+                description,
                 calcPath,
                 time.time,
                 latitude!!,
