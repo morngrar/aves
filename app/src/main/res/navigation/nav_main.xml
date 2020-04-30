@@ -23,6 +23,9 @@
         <action
             android:id="@+id/dest_add_observation"
             app:destination="@id/dest_add_observation_fragment" />
+        <action
+            android:id="@+id/action_dest_home_to_dest_bird_radar"
+            app:destination="@id/dest_bird_radar" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -50,6 +53,11 @@
         android:name="ntnu20.imt3673.group4.aves.LightSensorDemoFragment"
         android:label="Light Sensor Demo"
         tools:layout="@layout/fragment_light_sensor_demo" />
+    <fragment
+        android:id="@+id/dest_bird_radar"
+        android:name="ntnu20.imt3673.group4.aves.BirdRadarFragment"
+        android:label="Bird Radar"
+        tools:layout="@layout/fragment_bird_radar" />
     <fragment
         android:id="@+id/dest_add_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.AddObservationFragment"
