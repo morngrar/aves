@@ -22,7 +22,7 @@ android {
 
     defaultConfig {
         applicationId "ntnu20.imt3673.group4.aves"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
