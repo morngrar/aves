@@ -28,7 +28,7 @@ class MainActivityFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.recyclerView.apply {
-            adapter = ObservationAdapter()
+            adapter = ObservationAdapter(context)
             layoutManager = LinearLayoutManager(context)
         }
     }
