@@ -34,6 +34,14 @@ android {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
+
+        def secretsProperties = new Properties()
+        if (rootProject.file("secrets.properties").exists()) {
+            rootProject.file("secrets.properties")?.withInputStream {
+                secretsProperties.load(it)
+            }
+        }
+        resValue "string", "google_maps_key", (secretsProperties["GOOGLE_MAPS_API_KEY"] ?: "")
     }
 
     buildTypes {
@@ -83,6 +91,9 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.preference:preference:1.1.1'
+
+    /** Dependency to include Maps SDK for Android */
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     /** Lifecycle */
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
