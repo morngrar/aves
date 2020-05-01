@@ -15,7 +15,9 @@
     <string name="button_text_cancel">Cancel</string>
     <string name="edit_avatar">Click to upload new</string>
     <string name="hint_bird_name">Bird name</string>
+    <string name="hint_description">Description</string>
     <string name="lbl_location">Location: %1$s</string>
+    <string name="lbl_description">A small blue bird</string>
     <string name="lbl_btn_add_observation">Add observation</string>
     <string name="lbl_weather_data">Weather data: %1s</string>
     <string name="str_done">Done!</string>
