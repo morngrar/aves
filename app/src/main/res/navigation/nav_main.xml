@@ -24,7 +24,7 @@
             android:id="@+id/dest_add_observation"
             app:destination="@id/dest_add_observation_fragment" />
         <action
-            android:id="@+id/action_view_obsevation"
+            android:id="@+id/action_view_observation"
             app:destination="@id/dest_view_observation_fragment" />
     </fragment>
     <fragment
@@ -64,5 +64,8 @@
     <fragment
         android:id="@+id/dest_view_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.ViewObservationFragment"
-        android:label="ViewObservationFragment" />
+        android:label="ViewObservationFragment" >
+        <argument android:name="ObservationToView"
+            app:argType="ntnu20.imt3673.group4.aves.data.ObservationData" />
+    </fragment>
 </navigation>
