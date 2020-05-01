@@ -1,15 +1,57 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import com.google.firebase.firestore.DocumentSnapshot
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
+import ntnu20.imt3673.group4.aves.data.FirestoreRepository
+import ntnu20.imt3673.group4.aves.data.ObservationData
 
+class FirestoreViewModel : ViewModel() {
+    val TAG = "FIRESTORE_VIEW_MODEL"
+    var firebaseRepository = FirestoreRepository()
+    var savedObservations : MutableLiveData<List<ObservationData>> = MutableLiveData()
 
-class FirestoreViewModel(application: Application) : AndroidViewModel(application) {
+    // save observation to firebase
+    fun saveObservationToFirebase(observationData: ObservationData){
+        firebaseRepository.saveObservationData(observationData).addOnFailureListener {
+            Log.e(TAG,"Failed to save observation!")
+        }
+    }
 
-    private val mFirestore: FirebaseFirestore? = null
+    // get realtime updates from firebase regarding saved observations
+    fun getSavedObservations(): LiveData<List<ObservationData>> {
+        firebaseRepository.getSavedObservations().addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                savedObservations.value = null
+                return@EventListener
+            }
+
+            var savedObservationList : MutableList<ObservationData> = mutableListOf()
+            for (doc in value!!) {
+                var addressItem = doc.toObject(ObservationData::class.java)
+                savedObservationList.add(addressItem)
+            }
+            savedObservations.value = savedObservationList
+        })
+
+        return savedObservations
+    }
+
+    // delete an observation from firebase
+    fun deleteObservation(observationData: ObservationData){
+        firebaseRepository.deleteObservation(observationData).addOnFailureListener {
+            Log.e(TAG,"Failed to delete observation")
+        }
+    }
+
 
 }
