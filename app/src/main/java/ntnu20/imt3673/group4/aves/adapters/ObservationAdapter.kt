@@ -7,13 +7,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.media.ThumbnailUtils
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Toast
-import androidx.collection.arrayMapOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -49,7 +45,8 @@ class ObservationAdapter(val context: Context) :
         holder.binding.lblCardBirdName.text = observation.birdName
         holder.binding.lblCardDescription.text = observation.description
         holder.binding.lblCardTime.text = Date(observation.time).toString()
-        holder.binding.lblCardLocation.text = "Loc: %4.4f, %4.4f".format(observation.latitude, observation.longitude)
+        holder.binding.lblCardLocation.text =
+            "Loc: %4.4f, %4.4f".format(observation.latitude, observation.longitude)
         holder.binding.lblCardCloudiness.text = "Cloud cover: ${observation.cloudiness}"
         holder.binding.lblCardPressure.text = "Pressure: ${observation.pressure} hPa"
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
@@ -99,7 +96,8 @@ class ObservationAdapter(val context: Context) :
         holder.itemView.setOnClickListener {
             // Get the action from the navigation, navigate to the destination the action leads to
             // with the observation as a parameter
-            val actionDestViewObservation = MainActivityFragmentDirections.actionViewObservation(observation)
+            val actionDestViewObservation =
+                MainActivityFragmentDirections.actionViewObservation(observation)
             Navigation.findNavController(it).navigate(actionDestViewObservation)
         }
     }

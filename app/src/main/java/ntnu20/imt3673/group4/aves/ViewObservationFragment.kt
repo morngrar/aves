@@ -1,15 +1,17 @@
 package ntnu20.imt3673.group4.aves
 
+import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_view_observation.*
-import ntnu20.imt3673.group4.aves.adapters.ObservationAdapter
-
 import ntnu20.imt3673.group4.aves.databinding.FragmentViewObservationBinding
+import java.io.File
+import java.util.*
 
 class ViewObservationFragment : Fragment() {
     private lateinit var views: FragmentViewObservationBinding
@@ -19,22 +21,33 @@ class ViewObservationFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_view_observation, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Get the arguments passed with action
-        arguments?.let {
+        arguments?.let {    // If the arguments are not null, insert
             val safeArgs = ViewObservationFragmentArgs.fromBundle(it)
-            view_birdName.text = safeArgs.ObservationToView.birdName
+            val data = safeArgs.ObservationToView
+            view_birdName.text = data.birdName
+            view_description.text = data.description
+            view_time.text = Date(data.time).toString()
+            view_location.text = "Loc: %4.4f, %4.4f".format(data.latitude, data.longitude)
+            view_cloudiness.text = data.cloudiness
+            view_rain.text = data.rain + " mm"
+            view_pressure.text = data.pressure + " hPa"
+            view_wind.text = data.windSpeed + " mps"
+
+            // Set the imageView
+            if(data.imagePath != "") {
+                val file = File(data.imagePath)
+                file.also { f ->
+                    val photoUri: Uri = FileProvider.getUriForFile(requireContext(),
+                        "ntnu20.imt3673.group4.aves.provider",
+                        f)
+                    view_observation_image.setImageURI(Uri.parse(file.absolutePath))
+                }
+            }
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        // Get the arguments passed with action
-//        arguments?.let {
-//            val safeArgs = ViewObservationFragmentArgs.fromBundle(it)
-//            Log.d("aaaaaaaaa",safeArgs.toString())
-//        }
-    }
 }
