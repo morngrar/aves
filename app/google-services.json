@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "289908311764-i6mb7mv5r70oktkjemfrrkk0gjmg3o2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ntnu20.imt3673.group4.aves",
+            "certificate_hash": "a80cec1945e54006d1257e7f6964f38c8d33d4d4"
+          }
+        },
+        {
           "client_id": "289908311764-a11accnbqjes4q3e7d3duuim66u46gvi.apps.googleusercontent.com",
           "client_type": 3
         }
