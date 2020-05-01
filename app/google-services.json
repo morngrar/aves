@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "289908311764",
+    "firebase_url": "https://aves-df114.firebaseio.com",
+    "project_id": "aves-df114",
+    "storage_bucket": "aves-df114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289908311764:android:d73f635a9b8ea386d79d41",
+        "android_client_info": {
+          "package_name": "ntnu20.imt3673.group4.aves"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289908311764-a11accnbqjes4q3e7d3duuim66u46gvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOfEAoBYz4ATn9E5aAiqDpcEGeodvycZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289908311764-a11accnbqjes4q3e7d3duuim66u46gvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
