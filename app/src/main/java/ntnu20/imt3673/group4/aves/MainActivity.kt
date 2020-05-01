@@ -22,6 +22,7 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
  */
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         /* Read preferences */
@@ -118,6 +119,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed();
         }
     }
+
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 }

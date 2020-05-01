@@ -36,4 +36,12 @@
     <string name="rain_4_mm">Rain: 4 mm</string>
     <string name="wind_12_mps">Wind: 12 mps</string>
     <string name="pressure_1015_4_hpa">Pressure: 1015.4 hPa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="text_new_bird">New Discovery!</string>
+    <string name="txt_your_statistics">Your Statistics</string>
+    <string name="txt_total_sightings">Total Sightings: </string>
+    <string name="txt_most_frequent">Most Frequent Sighting: </string>
+
 </resources>

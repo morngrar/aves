@@ -47,6 +47,8 @@ class ViewObservationFragment : Fragment() {
                     view_observation_image.setImageURI(Uri.parse(file.absolutePath))
                 }
             }
+
+
         }
     }
 
