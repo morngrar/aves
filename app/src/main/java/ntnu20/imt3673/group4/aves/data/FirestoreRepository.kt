@@ -14,20 +14,20 @@ class FirestoreRepository {
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<Void> {
-        var documentReference = firestoreDB.collection("users").document(user!!.email.toString())
+        var documentReference = firestoreDB.collection("users").document(user!!.uid)
             .collection("observations").document(observationData.id.toString())
         return documentReference.set(observationData)
     }
 
     // get the users saved observations from firebase
     fun getSavedObservations(): CollectionReference {
-        var collectionReference = firestoreDB.collection("users/${user!!.email.toString()}/observations")
+        var collectionReference = firestoreDB.collection("users/${user!!.uid}/observations")
         return collectionReference
     }
 
     // delete an observation
     fun deleteObservation(observationData: ObservationData): Task<Void> {
-        var documentReference =  firestoreDB.collection("users/${user!!.email.toString()}/Observations")
+        var documentReference =  firestoreDB.collection("users/${user!!.uid}/Observations")
             .document(observationData.id.toString())
 
         return documentReference.delete()
