@@ -12,10 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.codelabs.buildyourfirstmap.place
+package ntnu20.imt3673.group4.aves.place
 
 import com.google.android.gms.maps.model.LatLng
-import ntnu20.imt3673.group4.aves.place.Place
 
 data class PlaceResponse(
     val geometry: Geometry,

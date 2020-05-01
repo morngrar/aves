@@ -15,11 +15,9 @@
 package ntnu20.imt3673.group4.aves.place
 
 import android.content.Context
-import com.google.codelabs.buildyourfirstmap.R
-import ntnu20.imt3673.group4.aves.R
-import com.google.codelabs.buildyourfirstmap.place.PlaceResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import ntnu20.imt3673.group4.aves.R
 import java.io.InputStream
 import java.io.InputStreamReader
 

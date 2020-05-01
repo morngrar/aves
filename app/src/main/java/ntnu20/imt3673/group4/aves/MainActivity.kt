@@ -2,6 +2,7 @@ package ntnu20.imt3673.group4.aves
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -11,9 +12,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_main.*
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
+import ntnu20.imt3673.group4.aves.place.Place
+import ntnu20.imt3673.group4.aves.place.PlacesReader
 
 
 /**
@@ -21,6 +27,7 @@ import ntnu20.imt3673.group4.aves.location.PermissionUtility
  * Ensures that correct permissions are given.
  */
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -37,6 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /* For reference, this worked. Should be in Bird Radar fragment*/
+//        val mapFragment = supportFragmentManager?.findFragmentById(
+//            R.id.map_fragment) as? SupportMapFragment
+//        mapFragment?.getMapAsync { googleMap -> addMarkers(googleMap) }
+//        Log.d("mapmapmap", mapFragment.toString())
 
         /* Set the action bar that we are using */
         setSupportActionBar(toolbar)
@@ -118,6 +131,7 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed();
         }
     }
+
 
     override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
 }
