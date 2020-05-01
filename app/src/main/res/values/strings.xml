@@ -43,5 +43,6 @@
     <string name="txt_your_statistics">Your Statistics</string>
     <string name="txt_total_sightings">Total Sightings: </string>
     <string name="txt_most_frequent">Most Frequent Sighting: </string>
+    <string name="sign_in">Sign In</string>
 
 </resources>

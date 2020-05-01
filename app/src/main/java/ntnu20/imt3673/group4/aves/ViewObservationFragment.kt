@@ -40,12 +40,7 @@ class ViewObservationFragment : Fragment() {
             // Set the imageView
             if(data.imagePath != "") {
                 val file = File(data.imagePath)
-                file.also { f ->
-                    val photoUri: Uri = FileProvider.getUriForFile(requireContext(),
-                        "ntnu20.imt3673.group4.aves.provider",
-                        f)
-                    view_observation_image.setImageURI(Uri.parse(file.absolutePath))
-                }
+                view_observation_image.setImageURI(Uri.parse(file.absolutePath))
             }
 
 

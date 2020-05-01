@@ -12,7 +12,7 @@ android {
     viewBinding {
         enabled = true
     }
-
+    
     dataBinding {
         enabled = true
     }
@@ -99,10 +99,22 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     /** Firebase */
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.4.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'com.google.firebase:firebase-core:17.4.0'
-    implementation 'com.google.firebase:firebase-auth:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.firebaseui:firebase-ui-storage:3.3.1'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.6'
+
+    /** Anko */
+    implementation "org.jetbrains.anko:anko:$anko_version"
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-design:$anko_version"
+    implementation "org.jetbrains.anko:anko-coroutines:$anko_version"
+
 
     /** Lifecycle */
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
@@ -131,10 +143,10 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.2.2"
 
     /** Dynamic Feature Module Support */
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha05"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha06"
 
     /** Testing Navigation */
-    androidTestImplementation "androidx.navigation:navigation-testing:2.3.0-alpha05"
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.0-alpha06"
 
     /** espresso */
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -161,7 +173,7 @@ dependencies {
     /** instrumentation testing */
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-alpha05'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-beta01'
     implementation 'androidx.exifinterface:exifinterface:1.3.0-alpha01'
 
 }
