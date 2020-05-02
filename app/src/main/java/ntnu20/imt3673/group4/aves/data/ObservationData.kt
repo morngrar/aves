@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ObservationData(
     @PrimaryKey//(autoGenerate = true)
-    var id: String? = "a",
+    var id: String = "",
     val birdName: String = "",
     var description: String? = "",
     val imagePath: String ="",
