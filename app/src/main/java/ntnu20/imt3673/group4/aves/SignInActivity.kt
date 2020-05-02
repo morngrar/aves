@@ -1,6 +1,7 @@
 package ntnu20.imt3673.group4.aves
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,8 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import ntnu20.imt3673.group4.aves.data.FirestoreRepository
+import ntnu20.imt3673.group4.aves.data.FirestoreRepository.initCurrentUserIfFirstTime
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.design.longSnackbar
 import org.jetbrains.anko.intentFor
@@ -47,7 +50,9 @@ class SignInActivity : AppCompatActivity() {
 
             if (resultCode == Activity.RESULT_OK) {
                 Toast.makeText(this, "Setting up your account", Toast.LENGTH_SHORT).show()
-                startActivity(intentFor<MainActivity>().newTask().clearTask())
+                FirestoreRepository.initCurrentUserIfFirstTime {
+                    startActivity(intentFor<MainActivity>().newTask().clearTask())
+                }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (response == null) return
 

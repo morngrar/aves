@@ -44,5 +44,6 @@
     <string name="txt_total_sightings">Total Sightings: </string>
     <string name="txt_most_frequent">Most Frequent Sighting: </string>
     <string name="sign_in">Sign In</string>
+    <string name="log_out">Log Out</string>
 
 </resources>

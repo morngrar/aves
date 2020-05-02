@@ -98,15 +98,15 @@ class AddObservationFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val useLocation = sharedPreferences.getBoolean("pref_location", false)
+//        val useLocation = sharedPreferences.getBoolean("pref_location", false)
 
         //Only try to get location and weather if the user hasn't disabled this in settings
         //TODO:remove this check in final version
-        if (!useLocation) {
-            viewModel.locationNotUsed()
-        } else {
+//        if (!useLocation) {
+//            viewModel.locationNotUsed()
+//        } else {
             getLocationAndWeather()
-        }
+//        }
 
         btn_gallery.setOnClickListener {
             pickImageFromGallery()

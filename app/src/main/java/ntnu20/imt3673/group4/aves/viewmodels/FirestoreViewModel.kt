@@ -16,7 +16,7 @@ import ntnu20.imt3673.group4.aves.data.ObservationData
 
 class FirestoreViewModel : ViewModel() {
     val TAG = "FIRESTORE_VIEW_MODEL"
-    var firebaseRepository = FirestoreRepository()
+    var firebaseRepository = FirestoreRepository
     var savedObservations : MutableLiveData<List<ObservationData>> = MutableLiveData()
 
     // save observation to firebase
