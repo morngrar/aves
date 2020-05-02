@@ -37,6 +37,26 @@ class FirestoreViewModel : ViewModel() {
 
             var savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
+                var observationData = doc.toObject(ObservationData::class.java)
+                savedObservationList.add(observationData)
+            }
+            savedObservations.value = savedObservationList
+        })
+
+        return savedObservations
+    }
+
+    // get realtime updates from firebase regarding all observations
+    fun getAllObservations(): LiveData<List<ObservationData>> {
+        firebaseRepository.getAllObservations().addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                savedObservations.value = null
+                return@EventListener
+            }
+
+            var savedObservationList : MutableList<ObservationData> = mutableListOf()
+            for (doc in value!!) {
                 var addressItem = doc.toObject(ObservationData::class.java)
                 savedObservationList.add(addressItem)
             }
@@ -45,6 +65,7 @@ class FirestoreViewModel : ViewModel() {
 
         return savedObservations
     }
+
 
     // delete an observation from firebase
     fun deleteObservation(observationData: ObservationData){

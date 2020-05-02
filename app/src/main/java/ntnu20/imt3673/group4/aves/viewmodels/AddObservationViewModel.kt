@@ -1,6 +1,7 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
@@ -13,6 +14,11 @@ import java.util.*
 
 /** ViewModel for the AddObservation fragment */
 class AddObservationViewModel(application: Application) : AndroidViewModel(application) {
+
+
+    private val firestoreViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(
+        Application()
+    ).create(FirestoreViewModel::class.java)
 
     /** Location-related variables */
     private var latitude: Double? = null
@@ -83,7 +89,23 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         if (path != null) {
             calcPath = path!!
         }
-        db.observations().insertObservation(
+//        db.observations().insertObservation(
+//            ObservationData(
+//                0,
+//                birdName.value!!,
+//                description,
+//                calcPath,
+//                time.time,
+//                latitude!!,
+//                longitude!!,
+//                weatherDataPoint!!.precipitationValue!!,
+//                weatherDataPoint!!.windSpeed!!,
+//                weatherDataPoint!!.cloudiness!!,
+//                weatherDataPoint!!.pressure!!
+//            )
+//        )
+
+        firestoreViewModel.saveObservationToFirebase(
             ObservationData(
                 0,
                 birdName.value!!,
