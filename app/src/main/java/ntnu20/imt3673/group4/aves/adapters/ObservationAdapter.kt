@@ -70,8 +70,9 @@ class ObservationAdapter(val context: Context) : ListAdapter<ObservationData, Ob
             holder.binding.imgBirdPreview.setImageBitmap(thumbnail!!)
         }
     }
+
     /**
-     * @brief EntryDifferenceCallback
+     * @brief ObservationDifferenceCallback
      */
     class ObservationDifferenceCallback : DiffUtil.ItemCallback<ObservationData>() {
         // What determines if two items are the same?
