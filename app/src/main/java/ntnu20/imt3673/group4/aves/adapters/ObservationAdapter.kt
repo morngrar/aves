@@ -46,7 +46,6 @@ class ObservationAdapter(val context: Context) : ListAdapter<ObservationData, Ob
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
 
         if (observation.imagePath != "") {
-//            val file = File(observation.imagePath)
             val thumbWidth = 100//holder.binding.imgBirdPreview.width
             val thumbHeight = 100//holder.binding.imgBirdPreview.height
             var thumbnail = ThumbnailUtils.extractThumbnail(
@@ -63,27 +62,12 @@ class ObservationAdapter(val context: Context) : ListAdapter<ObservationData, Ob
 
             val matrix = Matrix()
             if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
-                Log.d("AVES", "ORIENTATION: $orientation")
                 matrix.postRotate(90.0f)
                 thumbnail = Bitmap.createBitmap(
                     thumbnail, 0, 0, thumbnail.width, thumbnail.height, matrix, true);
             }
 
-
-
-//            val cr = context.contentResolver // api level Q
             holder.binding.imgBirdPreview.setImageBitmap(thumbnail!!)
-//                holder.binding.imgBirdPreview.setImageBitmap(
-//                --- API level Q ---
-//                cr.loadThumbnail(
-//                    observation.imagePath,
-//                    Size(
-//                        thumbWidth,
-//                        thumbHeight
-//                    ),
-//                    null
-//                )
-//            )//.setImageURI(Uri.fromFile(file))
         }
     }
     /**
