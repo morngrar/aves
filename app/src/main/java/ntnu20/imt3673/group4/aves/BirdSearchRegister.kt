@@ -61,7 +61,7 @@ val searchRegister = mapOf(
             "Alke (Alca torda)",
             R.drawable.alke_alca_torda0,
             R.drawable.thumb_alke_alca_torda0,
-            "<a href='http://www.flickr.com/photos/ullkika/5959871911' rel='nofollow' target='_blank'>Foto: AnnaKika</a> (<a href='http://creativecommons.org/licenses/by/2.0/'>Lisens</a>)"
+            "Foto av AnnaKika via Flickr, lisens: CC BY 2.0"
         )
     ),
     "snøugle bubo scandiacus" to listOf(
@@ -85,7 +85,7 @@ val searchRegister = mapOf(
             "Pilfink (Passer montanus)",
             R.drawable.pilfink_passer_montanus0,
             R.drawable.thumb_pilfink_passer_montanus0,
-            "<a href='http://www.flickr.com/photos/lipkee/640434646/' rel='nofollow' target='_blank'>Foto: Lip Kee</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av Lip Kee via Flickr, lisens: CC BY-SA 2.0"
         )
     ),
     "rødnebbterne sterna paradisaea" to listOf(
@@ -133,7 +133,7 @@ val searchRegister = mapOf(
             "Granmeis (Poecile montanus)",
             R.drawable.granmeis_poecile_montanus0,
             R.drawable.thumb_granmeis_poecile_montanus0,
-            "<a href='http://www.flickr.com/photos/davehamster/2279239813/' rel='nofollow' target='_blank'>Foto: Dave Hamster</a> (<a href='http://creativecommons.org/licenses/by/2.0/'>Lisens</a>)"
+            "Foto av Dave Hamster via Flickr, lisens: CC BY 2.0"
         )
     ),
     "myrsnipe calidris alpina" to listOf(
@@ -157,7 +157,7 @@ val searchRegister = mapOf(
             "Blåmeis (Cyanistes caeruleus)",
             R.drawable.blaameis_cyanistes_caeruleus0,
             R.drawable.thumb_blaameis_cyanistes_caeruleus0,
-            "<a href='http://www.flickr.com/photos/luc_viatour/4219904560/' rel='nofollow' target='_blank'>Foto: luc.viatour</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av luc.viatour via Flickr, lisens: CC BY-SA 2.0"
         )
     ),
     "toppmeis lophophanes cristatus" to listOf(
@@ -173,7 +173,7 @@ val searchRegister = mapOf(
             "Vipe (Vanellus vanellus)",
             R.drawable.vipe_vanellus_vanellus1,
             R.drawable.thumb_vipe_vanellus_vanellus1,
-            "<a href='http://www.flickr.com/photos/rainbirder/4717975631/' rel='nofollow' target='_blank'>Foto: Rainbirder</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av Rainbirder via Flickr, lisens: CC BY-SA 2.0"
         )
     ),
     "grønnspett picus viridis" to listOf(
@@ -275,7 +275,7 @@ val searchRegister = mapOf(
             "Hærfugl (Upupa epops)",
             R.drawable.haerfugl_upupa_epops0,
             R.drawable.thumb_haerfugl_upupa_epops0,
-            "<a href='http://commons.wikimedia.org/wiki/File:ABUBILLA_%28Upupa_epops%29.jpg' rel='nofollow' target='_blank'>Foto: Arturo Nikolai</a> (<a href='http://creativecommons.org/licenses/by-sa/3.0/deed.en'>Lisens</a>)"
+            "Foto av Arturo Nikolai via Wikimedia, lisens: CC BY-SA 3.0"
         )
     ),
     "hvitryggspett dendrocopos leucotos" to listOf(
@@ -339,7 +339,7 @@ val searchRegister = mapOf(
             "Svarttrost (Turdus merula)",
             R.drawable.svarttrost_turdus_merula0,
             R.drawable.thumb_svarttrost_turdus_merula0,
-            "<a href='http://www.flickr.com/photos/lipkee/459814709/' rel='nofollow' target='_blank'>Foto: Lip Kee</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av Lip Kee via Flickr, lisens: CC BY-SA"
         )
     ),
     "flaggspett dendrocopos major" to listOf(
@@ -475,7 +475,7 @@ val searchRegister = mapOf(
             "Kjøttmeis (Parus major)",
             R.drawable.kjoettmeis_parus_major1,
             R.drawable.thumb_kjoettmeis_parus_major1,
-            "<a href='http://www.flickr.com/photos/luc_viatour/3021211039/' rel='nofollow' target='_blank'>Foto: luc.viatour</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av luc.viatour via Flickr, lisens: CC BY-SA"
         )
     ),
     "tårnfalk falco tinnunculus" to listOf(
@@ -745,7 +745,7 @@ val searchRegister = mapOf(
             "Løvsanger (Phylloscopus trochilus)",
             R.drawable.loevsanger_phylloscopus_trochilus0,
             R.drawable.thumb_loevsanger_phylloscopus_trochilus0,
-            "<a href='http://www.flickr.com/photos/rainbirder/4612215849/' rel='nofollow' target='_blank'>Foto: Rainbirder</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/deed.en'>Lisens</a>)"
+            "Foto av Rainbirder via Flick, lisens: CC BY-SA 2.0"
         )
     ),
     "tornirisk carduelis cannabina" to listOf(
@@ -865,7 +865,7 @@ val searchRegister = mapOf(
             "Bokfink (Fringilla coelebs)",
             R.drawable.bokfink_fringilla_coelebs0,
             R.drawable.thumb_bokfink_fringilla_coelebs0,
-            "<a href=''>Foto: rubund</a> (<a href='http://creativecommons.org/licenses/by-sa/2.0/'>Lisens</a>)"
+            "Foto av rubund via naturfakta.no, lisens: CC BY-SA 2.0"
         )
     ),
     "aftenfalk falco vespertinus" to listOf(
@@ -889,7 +889,7 @@ val searchRegister = mapOf(
             "Stær (Sturnus vulgaris)",
             R.drawable.staer_sturnus_vulgaris0,
             R.drawable.thumb_staer_sturnus_vulgaris0,
-            "<a href='http://www.flickr.com/photos/peuplier/481422016/' rel='nofollow' target='_blank'>Foto: peuplier</a> (<a href='http://creativecommons.org/licenses/by-nd/2.0/deed'>Lisens</a>)"
+            "Foto av peuplier via Flickr, lisens: CC BY-ND 2.0"
         )
     ),
     "sivspurv emberiza schoeniclus" to listOf(
