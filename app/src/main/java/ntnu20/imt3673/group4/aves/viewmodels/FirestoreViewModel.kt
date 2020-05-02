@@ -39,11 +39,9 @@ class FirestoreViewModel : ViewModel() {
             var savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
                 var observationData = doc.toObject(ObservationData::class.java)
-                Log.d("AAAgetSavedcc ", doc.toString())
                 savedObservationList.add(observationData)
             }
             savedObservations.value = savedObservationList
-            Log.d("AAAsavedObservations: ", savedObservations.value.toString())
         })
 
         return savedObservations
@@ -60,8 +58,8 @@ class FirestoreViewModel : ViewModel() {
 
             var savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
-                var addressItem = doc.toObject(ObservationData::class.java)
-                savedObservationList.add(addressItem)
+                var observationData = doc.toObject(ObservationData::class.java)
+                savedObservationList.add(observationData)
             }
             savedObservations.value = savedObservationList
         })
