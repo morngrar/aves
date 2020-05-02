@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
 import ntnu20.imt3673.group4.aves.data.ObservationData
+import ntnu20.imt3673.group4.aves.observationList
 
 class FirestoreViewModel : ViewModel() {
     val TAG = "FIRESTORE_VIEW_MODEL"
@@ -38,9 +39,11 @@ class FirestoreViewModel : ViewModel() {
             var savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
                 var observationData = doc.toObject(ObservationData::class.java)
+                Log.d("AAAgetSavedcc ", doc.toString())
                 savedObservationList.add(observationData)
             }
             savedObservations.value = savedObservationList
+            Log.d("AAAsavedObservations: ", savedObservations.value.toString())
         })
 
         return savedObservations

@@ -8,7 +8,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ntnu20.imt3673.group4.aves.R
 import ntnu20.imt3673.group4.aves.data.ObservationData
-import ntnu20.imt3673.group4.aves.data.ObservationDatabase
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import java.util.*
 

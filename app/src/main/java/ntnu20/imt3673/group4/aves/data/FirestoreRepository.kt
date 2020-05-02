@@ -16,7 +16,7 @@ class FirestoreRepository {
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
-           return firestoreDB.collection("users").document("tempuser").collection("observation").add(observationData)
+           return firestoreDB.collection("users").document("tempuser").collection("observations").add(observationData)
         //TODO: user ${user!!.uid} instead of tempuser
     }
 
@@ -24,18 +24,20 @@ class FirestoreRepository {
     fun getSavedObservations(): CollectionReference {
         var collectionReference = firestoreDB.collection("users/tempuser/observations")
         //TODO: user ${user!!.uid} instead of tempuser
+
         return collectionReference
     }
 
     // get the all saved observations from firebase
     fun getAllObservations(): CollectionReference {
-        var collectionReference = firestoreDB.collection("users/observations") // temp path for testing
+        var collectionReference = firestoreDB.collection("users/observation") // temp path for testing
+        // TODO: change this to check all individual users observations
         return collectionReference
     }
 
     // delete an observation
     fun deleteObservation(observationData: ObservationData): Task<Void> {
-        var documentReference =  firestoreDB.collection("users/tempuser/Observations")
+        var documentReference =  firestoreDB.collection("users/tempuser/observation")
             .document(observationData.id.toString())
         //TODO: user ${user!!.uid} instead of tempuser
         return documentReference.delete()

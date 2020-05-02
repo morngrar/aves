@@ -10,15 +10,15 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ObservationData(
     @PrimaryKey//(autoGenerate = true)
-    var id: String,
-    val birdName: String,
-    var description: String?,
-    val imagePath: String,
-    val time: Long,
-    val latitude: Double,
-    val longitude: Double,
-    val rain: String,
-    val windSpeed: String,
-    val cloudiness: String,
-    val pressure: String   // probably better to use the onboard sensor if available
+    var id: String? = "a",
+    val birdName: String = "",
+    var description: String? = "",
+    val imagePath: String ="",
+    val time: Long = 0,
+    val latitude: Double? = 0.0,
+    val longitude: Double? = 0.0,
+    val rain: String? = "",
+    val windSpeed: String? = "",
+    val cloudiness: String? = "",
+    val pressure: String? = ""   // probably better to use the onboard sensor if available
 ) : Parcelable
