@@ -30,14 +30,14 @@ class FirestoreRepository {
 
     // get the all saved observations from firebase
     fun getAllObservations(): CollectionReference {
-        var collectionReference = firestoreDB.collection("users/observation") // temp path for testing
+        var collectionReference = firestoreDB.collection("users/observations") // temp path for testing
         // TODO: change this to check all individual users observations
         return collectionReference
     }
 
     // delete an observation
     fun deleteObservation(observationData: ObservationData): Task<Void> {
-        var documentReference =  firestoreDB.collection("users/tempuser/observation")
+        var documentReference =  firestoreDB.collection("users/tempuser/observations")
             .document(observationData.id.toString())
         //TODO: user ${user!!.uid} instead of tempuser
         return documentReference.delete()
