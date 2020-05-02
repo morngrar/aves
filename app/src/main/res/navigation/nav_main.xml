@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_view_obsevation"
             app:destination="@id/dest_view_observation_fragment" />
+        <action
+            android:id="@+id/action_dest_home_to_dest_bird_search"
+            app:destination="@id/dest_bird_search" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
@@ -65,4 +68,9 @@
         android:id="@+id/dest_view_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.ViewObservationFragment"
         android:label="ViewObservationFragment" />
+    <fragment
+        android:id="@+id/dest_bird_search"
+        android:name="ntnu20.imt3673.group4.aves.BirdSearch"
+        android:label="fragment_bird_search"
+        tools:layout="@layout/fragment_bird_search" />
 </navigation>
