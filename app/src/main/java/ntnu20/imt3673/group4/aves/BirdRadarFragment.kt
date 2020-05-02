@@ -1,16 +1,19 @@
 package ntnu20.imt3673.group4.aves
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
 import ntnu20.imt3673.group4.aves.place.Place
 import ntnu20.imt3673.group4.aves.place.PlacesReader
+import ntnu20.imt3673.group4.aves.viewmodels.FirestoreViewModel
 
 
 class BirdRadarFragment : Fragment() {
@@ -53,7 +56,7 @@ class BirdRadarFragment : Fragment() {
             val marker = googleMap.addMarker(
                 MarkerOptions()
                     .title(place.name)
-                    .position(place.latLng)
+                    .position(place.latLng) // TODO: this does not work.
             )
        }
     }

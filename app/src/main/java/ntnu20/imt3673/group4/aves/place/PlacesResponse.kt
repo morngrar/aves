@@ -35,7 +35,5 @@ data class PlaceResponse(
 
 fun PlaceResponse.toPlace(): Place = Place(
     name = name,
-    latLng = LatLng(geometry.location.lat, geometry.location.lng),
-    address = vicinity,
-    rating = rating
+    latLng = LatLng(geometry.location.lat, geometry.location.lng)
 )
