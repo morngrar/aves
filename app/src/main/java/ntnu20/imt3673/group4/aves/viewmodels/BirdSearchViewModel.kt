@@ -1,13 +1,21 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import ntnu20.imt3673.group4.aves.BirdImage
+import androidx.lifecycle.*
 import ntnu20.imt3673.group4.aves.searchRegister
 
 class BirdSearchViewModel : ViewModel() {
-    private var _birdList = MutableLiveData(searchRegister.values.toList())
-    val birdList: LiveData<List<List<BirdImage>>>
-        get() = _birdList
+    private val completeBirdList = searchRegister.values.toList()
+
+    var searchString: MutableLiveData<String> = MutableLiveData("")
+
+    val filteredBirdList = Transformations.map(searchString) {
+        if (it.isEmpty()) {
+            completeBirdList
+        } else {
+            searchRegister.filterKeys {key ->
+                it.toLowerCase().toRegex().containsMatchIn(key)
+            }.values.toList()
+        }
+    }
+
 }

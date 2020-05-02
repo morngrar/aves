@@ -1,7 +1,6 @@
 package ntnu20.imt3673.group4.aves.adapters
 
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup

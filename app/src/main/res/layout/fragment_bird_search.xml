@@ -37,6 +37,7 @@
 
                     <EditText
                         android:id="@+id/txt_bird_search_query"
+                        android:text="@={vm.searchString}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
 
@@ -48,10 +49,8 @@
                 android:id="@+id/recycler_bird_search_results"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:searchResultList="@{vm.birdList}"
-                tools:listitem="@layout/bird_search_card">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                app:searchResultList="@{vm.filteredBirdList}"
+                tools:listitem="@layout/bird_search_card" />
 
         </LinearLayout>
     </ScrollView>
