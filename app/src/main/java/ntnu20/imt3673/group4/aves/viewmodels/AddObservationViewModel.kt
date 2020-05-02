@@ -83,7 +83,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         path = imgPath
     }
 
-    private val db = ObservationDatabase.getInstance(application)
+    //private val db = ObservationDatabase.getInstance(application)
     fun addObservation() = viewModelScope.launch {
         var calcPath: String = ""
         if (path != null) {
@@ -107,7 +107,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
 
         firestoreViewModel.saveObservationToFirebase(
             ObservationData(
-                0,
+                "",
                 birdName.value!!,
                 description,
                 calcPath,

@@ -9,8 +9,8 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "observations")
 @Parcelize
 data class ObservationData(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long,
+    @PrimaryKey//(autoGenerate = true)
+    var id: String,
     val birdName: String,
     var description: String?,
     val imagePath: String,

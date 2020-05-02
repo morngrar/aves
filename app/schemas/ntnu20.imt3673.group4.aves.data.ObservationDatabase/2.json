@@ -2,16 +2,16 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "84e2456d9f6b7b067972f45da040b684",
+    "identityHash": "3b613ab8a8f59418b21adeb6a3c7d040",
     "entities": [
       {
         "tableName": "observations",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `birdName` TEXT NOT NULL, `description` TEXT, `imagePath` TEXT NOT NULL, `time` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `rain` TEXT NOT NULL, `windSpeed` TEXT NOT NULL, `cloudiness` TEXT NOT NULL, `pressure` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `birdName` TEXT NOT NULL, `description` TEXT, `imagePath` TEXT NOT NULL, `time` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `rain` TEXT NOT NULL, `windSpeed` TEXT NOT NULL, `cloudiness` TEXT NOT NULL, `pressure` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -79,7 +79,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -88,7 +88,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '84e2456d9f6b7b067972f45da040b684')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3b613ab8a8f59418b21adeb6a3c7d040')"
     ]
   }
 }
