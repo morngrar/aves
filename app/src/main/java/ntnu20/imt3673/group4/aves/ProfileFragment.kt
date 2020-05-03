@@ -42,6 +42,7 @@ class ProfileFragment : Fragment() {
         views = FragmentProfileBinding.inflate(inflater, container, false)
         user.observe(viewLifecycleOwner, Observer {
             txt_real_name.text = it.name
+            txt_email.text = it.email
         })
         myObs.observe(viewLifecycleOwner, Observer {
             txt_total_sightings.text = "Total sightings: ${it.size.toString()}"
@@ -52,6 +53,7 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        
 
 
         /* Edit profile */
