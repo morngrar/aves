@@ -32,6 +32,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     val location: LiveData<String>
         get() = _location
 
+
     /** Setter for location will also turn on flags changing text color */
     fun setLocation(lat: Double, lon: Double) {
         latitude = lat
@@ -57,9 +58,10 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotWeather.value = true
     }
 
-    /** The bird's name */
+    /** Manual input fields */
     var birdName = MutableLiveData("") //TODO: change in final version
-    var description: String? = null
+    var description = MutableLiveData("")
+    var count = MutableLiveData("")
 
     /** The current time */
     val time = Date()
@@ -88,27 +90,13 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         if (path != null) {
             calcPath = path!!
         }
-//        db.observations().insertObservation(
-//            ObservationData(
-//                0,
-//                birdName.value!!,
-//                description,
-//                calcPath,
-//                time.time,
-//                latitude!!,
-//                longitude!!,
-//                weatherDataPoint!!.precipitationValue!!,
-//                weatherDataPoint!!.windSpeed!!,
-//                weatherDataPoint!!.cloudiness!!,
-//                weatherDataPoint!!.pressure!!
-//            )
-//        )
 
         firestoreViewModel.saveObservationToFirebase(
             ObservationData(
                 "",
                 birdName.value!!,
-                description,
+                description.value,
+                count.value,
                 calcPath,
                 time.time,
                 latitude!!,

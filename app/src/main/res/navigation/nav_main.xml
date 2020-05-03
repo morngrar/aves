@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/dest_settings"
         android:name="ntnu20.imt3673.group4.aves.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="@string/nav_settings" />
 
     <fragment
         android:id="@+id/destFragmentEditProfile"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/dest_add_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.AddObservationFragment"
-        android:label="AddObservationFragment" >
+        android:label="Add an observation">
         <action
             android:id="@+id/next_action"
             app:destination="@id/dest_home" />

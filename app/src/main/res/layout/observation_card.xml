@@ -124,6 +124,13 @@
 
                         </LinearLayout>
                     </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Number seen: 10"
+                        android:id="@+id/lbl_card_count"
+                        android:textAlignment="center"
+                        android:paddingTop="4dp" />
                 </LinearLayout>
 
             </LinearLayout>
