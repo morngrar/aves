@@ -42,9 +42,9 @@
     <string name="txt_most_frequent">Most Frequent Sighting: </string>
     <string name="sign_in">Sign In</string>
     <string name="log_out">Log Out</string>
-
     <string name="example_text">Example text</string>
     <string name="search_by_name">Search by name:</string>
     <string name="search_for_a_bird">Search for a bird</string>
+    <string name="temperature_14_4_c">Temperature: 14.4°C</string>
     <string name="your_observations">Your observations:</string>
 </resources>

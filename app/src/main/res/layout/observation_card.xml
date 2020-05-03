@@ -57,68 +57,73 @@
                 </FrameLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/lbl_card_description"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/lbl_description"
                         android:textColor="@android:color/black"
                         android:textStyle="italic"
                         />
-
                     <TextView
                         android:id="@+id/lbl_card_time"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/sat_19th_april_2020_17_08" />
 
-                    <TextView
-                        android:id="@+id/lbl_card_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/loc_123_332_23_334" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/lbl_card_cloudiness"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cloud_cover_23" />
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="3"
+                            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
-                    android:paddingStart="10dp"
-                    android:orientation="vertical"
-                    tools:ignore="RtlSymmetry">
 
-                    <TextView
-                        android:id="@+id/lbl_card_rain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="@string/rain_4_mm" />
+                            <TextView
+                                android:id="@+id/lbl_card_cloudiness"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cloud_cover_23" />
+                            <TextView
+                                android:id="@+id/lbl_card_temperature"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/temperature_14_4_c" />
+                        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/lbl_card_windspeed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/wind_12_mps" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="3"
+                            android:paddingStart="10dp"
+                            android:orientation="vertical"
+                            tools:ignore="RtlSymmetry">
 
-                    <TextView
-                        android:id="@+id/lbl_card_pressure"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pressure_1015_4_hpa" />
+                            <TextView
+                                android:id="@+id/lbl_card_rain"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="start"
+                                android:text="@string/rain_4_mm" />
 
+                            <TextView
+                                android:id="@+id/lbl_card_windspeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wind_12_mps" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
