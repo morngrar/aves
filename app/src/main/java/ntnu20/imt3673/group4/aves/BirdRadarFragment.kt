@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -28,11 +29,7 @@ import ntnu20.imt3673.group4.aves.viewmodels.FirestoreViewModel
 
 
 class BirdRadarFragment : Fragment() {
-    private val firestoreViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(
-        Application()
-    ).create(FirestoreViewModel::class.java)
-
-    private val allObservations = firestoreViewModel.getSavedObservations()
+    private val firestoreViewModel: FirestoreViewModel by activityViewModels()
 
     private lateinit var places: MutableList<Place>
     private var latitude = 0.0
@@ -44,7 +41,7 @@ class BirdRadarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var mapFragment = SupportMapFragment.newInstance()
+        val mapFragment = SupportMapFragment.newInstance()
         val fragmentTransaction =
             childFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.map_fragment, mapFragment)
@@ -52,6 +49,8 @@ class BirdRadarFragment : Fragment() {
 
         places = mutableListOf<Place>()
         getLocation()
+
+        val allObservations = firestoreViewModel.getSavedObservations()
 
         allObservations.observe(viewLifecycleOwner, Observer { it ->
             it.forEach {
