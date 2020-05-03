@@ -3,8 +3,14 @@
 
 
 
-    <Preference android:title="Restart app"
+    <Preference
         android:key="btn_restart_app"
-        android:summary="Restarts the app for settings to take effect"/>
+        android:summary="Restarts the app for settings to take effect"
+        android:title="Restart App" />
+
+    <Preference
+        android:title="Reset Password"
+        android:key="btn_reset_pwd"
+        android:summary="Sends an email to the user to reset password"/>
 
 </androidx.preference.PreferenceScreen>
