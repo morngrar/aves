@@ -1,11 +1,11 @@
 package ntnu20.imt3673.group4.aves.data
 
+import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import ntnu20.imt3673.group4.aves.data.FirestoreRepository.user
 import java.lang.NullPointerException
 
 object FirestoreRepository {
@@ -24,7 +24,7 @@ object FirestoreRepository {
     fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
         currentUserDocRef.get().addOnSuccessListener { docSnap ->
             if (!docSnap.exists()) {
-                val newUser = User(user?.displayName ?: "", null, emptyList())
+                val newUser = User(user?.displayName ?: "")
                 currentUserDocRef.set(newUser).addOnSuccessListener {
                     onComplete()
                 }
@@ -34,28 +34,16 @@ object FirestoreRepository {
     }
 
     fun updateCurrentUser(
-        name: String = "",
-        profilePicturePath: String? = null,
-        newObservation: ObservationData? = null
+        name: String = ""
     ) {
         val userFieldMap = mutableMapOf<String, Any>()
         if (name.isNotBlank()) userFieldMap["name"] = name
-
-        if (profilePicturePath != null)
-            userFieldMap["profilePicture"] = profilePicturePath
-        if (newObservation != null) {
-            var observations = getSavedObservations()
-            observations.add(newObservation)
-            userFieldMap["myObservations"] = observations
-        }
         currentUserDocRef.update(userFieldMap)
     }
 
-    fun getCurrentUser(onComplete: (User) -> Unit) {
-        currentUserDocRef.get()
-            .addOnSuccessListener {
-                it.toObject(User::class.java)?.let { it1 -> onComplete(it1) }
-            }
+    fun getUser(): DocumentReference {
+        val a = firestoreDB.collection("users").document(currentUserDocRef.toString())
+        return currentUserDocRef
     }
 
     // save observation to firebase
@@ -78,5 +66,4 @@ object FirestoreRepository {
 
         return documentReference.delete()
     }
-
 }

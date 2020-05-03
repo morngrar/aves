@@ -7,18 +7,32 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
 import ntnu20.imt3673.group4.aves.data.ObservationData
+import ntnu20.imt3673.group4.aves.data.User
 
 class FirestoreViewModel : ViewModel() {
     val TAG = "FIRESTORE_VIEW_MODEL"
+
     var firebaseRepository = FirestoreRepository
     var savedObservations : MutableLiveData<List<ObservationData>> = MutableLiveData()
+    var userObject: MutableLiveData<User> = MutableLiveData()
 
+    fun getCurrentUser() : LiveData<User>{
+        firebaseRepository.getUser().addSnapshotListener(EventListener<DocumentSnapshot> {user, e ->
+            if(e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                userObject.value = null
+                return@EventListener
+            }
+            val tempUser = user!!.toObject(User::class.java)
+            Log.d("AAA VM", tempUser.toString())
+            userObject.value = tempUser
+            Log.d("AAA VM userobject", userObject.value.toString())
+        })
+        return  userObject
+    }
     // save observation to firebase
     fun saveObservationToFirebase(observationData: ObservationData){
         firebaseRepository.saveObservationData(observationData).addOnFailureListener {
@@ -35,9 +49,9 @@ class FirestoreViewModel : ViewModel() {
                 return@EventListener
             }
 
-            var savedObservationList : MutableList<ObservationData> = mutableListOf()
+            val savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
-                var addressItem = doc.toObject(ObservationData::class.java)
+                val addressItem = doc.toObject(ObservationData::class.java)
                 savedObservationList.add(addressItem)
             }
             savedObservations.value = savedObservationList

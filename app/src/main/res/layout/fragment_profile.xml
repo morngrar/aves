@@ -40,15 +40,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/user_name"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
             android:id="@+id/txt_my_friends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

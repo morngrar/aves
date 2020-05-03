@@ -49,7 +49,7 @@ class SignInActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this, "Setting up your account", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Logging in", Toast.LENGTH_SHORT).show()
                 FirestoreRepository.initCurrentUserIfFirstTime {
                     startActivity(intentFor<MainActivity>().newTask().clearTask())
                 }
