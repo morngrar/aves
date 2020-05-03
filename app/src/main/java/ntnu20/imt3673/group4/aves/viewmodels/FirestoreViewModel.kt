@@ -27,9 +27,7 @@ class FirestoreViewModel : ViewModel() {
                 return@EventListener
             }
             val tempUser = user!!.toObject(User::class.java)
-            Log.d("AAA VM", tempUser.toString())
             userObject.value = tempUser
-            Log.d("AAA VM userobject", userObject.value.toString())
         })
         return  userObject
     }

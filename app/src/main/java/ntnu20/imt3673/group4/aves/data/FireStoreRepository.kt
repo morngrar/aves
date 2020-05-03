@@ -1,6 +1,5 @@
 package ntnu20.imt3673.group4.aves.data
 
-import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
