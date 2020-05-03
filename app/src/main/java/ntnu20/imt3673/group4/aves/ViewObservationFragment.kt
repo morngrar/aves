@@ -36,7 +36,6 @@ class ViewObservationFragment : Fragment() {
             view_rain.text = "Rain: ${data.rain} mm"
             view_pressure.text = "Pressure: ${data.pressure} hPa"
             view_wind.text = "Wind speed: ${data.windSpeed} mps"
-            //view_temperature.text = "Temperature: unknown"
             view_temperature.text = "Temperature ${data.temperature}°C"
 
             // Set the imageView
