@@ -67,9 +67,10 @@
     <fragment
         android:id="@+id/dest_view_observation_fragment"
         android:name="ntnu20.imt3673.group4.aves.ViewObservationFragment"
-        android:label="ViewObservationFragment">
+        android:label="Observation Details">
 
-        <argument android:name="ObservationToView"
+        <argument
+            android:name="ObservationToView"
             app:argType="ntnu20.imt3673.group4.aves.data.ObservationData" />
 
     </fragment>

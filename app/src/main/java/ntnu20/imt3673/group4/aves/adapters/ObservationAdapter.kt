@@ -45,12 +45,10 @@ class ObservationAdapter(val context: Context) :
         holder.binding.lblCardBirdName.text = observation.birdName
         holder.binding.lblCardDescription.text = observation.description
         holder.binding.lblCardTime.text = Date(observation.time).toString()
-        holder.binding.lblCardLocation.text =
-            "Loc: %4.4f, %4.4f".format(observation.latitude, observation.longitude)
-        holder.binding.lblCardCloudiness.text = "Cloud cover: ${observation.cloudiness}"
-        holder.binding.lblCardPressure.text = "Pressure: ${observation.pressure} hPa"
+        holder.binding.lblCardCloudiness.text = "Cloud cover: ${observation.cloudiness}%"
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
+        holder.binding.lblCardTemperature.text = "Temperature: ${observation.temperature}°C"
 
         if (observation.imagePath != "") {
             val thumbWidth = 100//holder.binding.imgBirdPreview.width

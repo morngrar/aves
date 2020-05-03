@@ -114,6 +114,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
                 latitude!!,
                 longitude!!,
                 weatherDataPoint!!.precipitationValue!!,
+                weatherDataPoint!!.temperature!!,
                 weatherDataPoint!!.windSpeed!!,
                 weatherDataPoint!!.cloudiness!!,
                 weatherDataPoint!!.pressure!!

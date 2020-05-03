@@ -21,6 +21,7 @@ data class ObservationData(
     val latitude: Double = 0.0,
     val longitude: Double = 0.0,
     val rain: String? = "",
+    val temperature: String? = "",
     val windSpeed: String? = "",
     val cloudiness: String? = "",
     val pressure: String? = ""   // probably better to use the onboard sensor if available
