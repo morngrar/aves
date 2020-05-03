@@ -18,6 +18,7 @@ import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 class FragmentEditProfile : Fragment() {
 
     private lateinit var views: FragmentProfileBinding
+    var firebaseRepository = FirestoreRepository()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +35,8 @@ class FragmentEditProfile : Fragment() {
         /* Save changes */
         btn_save.setOnClickListener {
             // save text field data and avatar
-            FirestoreRepository.updateCurrentUser(edit_real_name.text.toString())
+            firebaseRepository
+                .updateCurrentUser(edit_real_name.text.toString())
 
             // change fragment
             val actionDestFragmentProfile =

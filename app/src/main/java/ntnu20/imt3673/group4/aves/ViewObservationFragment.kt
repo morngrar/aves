@@ -30,7 +30,7 @@ class ViewObservationFragment : Fragment() {
             val data = safeArgs.ObservationToView
             view_birdName.text = data.birdName
             view_description.text = data.description
-            view_time.text = data.time?.let { it1 -> Date(it1).toString() }
+            view_time.text = data.time.let { it1 -> Date(it1).toString() }
             view_location.text = "Loc: %4.4f, %4.4f".format(data.latitude, data.longitude)
             view_cloudiness.text = data.cloudiness
             view_rain.text = data.rain + " mm"

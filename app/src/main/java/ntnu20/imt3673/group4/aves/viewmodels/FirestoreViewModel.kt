@@ -17,7 +17,7 @@ import ntnu20.imt3673.group4.aves.data.User
 class FirestoreViewModel : ViewModel() {
     val TAG = "FIRESTORE_VIEW_MODEL"
 
-    var firebaseRepository = FirestoreRepository
+    var firebaseRepository = FirestoreRepository()
     var savedObservations : MutableLiveData<List<ObservationData>> = MutableLiveData()
     var userObject: MutableLiveData<User> = MutableLiveData()
 
@@ -49,9 +49,9 @@ class FirestoreViewModel : ViewModel() {
                 return@EventListener
             }
 
-            var savedObservationList : MutableList<ObservationData> = mutableListOf()
+            val savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
-                var observationData = doc.toObject(ObservationData::class.java)
+                val observationData = doc.toObject(ObservationData::class.java)
                 savedObservationList.add(observationData)
             }
             savedObservations.value = savedObservationList

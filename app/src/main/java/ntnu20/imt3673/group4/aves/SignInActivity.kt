@@ -1,7 +1,6 @@
 package ntnu20.imt3673.group4.aves
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -11,7 +10,6 @@ import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
-import ntnu20.imt3673.group4.aves.data.FirestoreRepository.initCurrentUserIfFirstTime
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.design.longSnackbar
 import org.jetbrains.anko.intentFor
@@ -19,6 +17,7 @@ import org.jetbrains.anko.newTask
 
 class SignInActivity : AppCompatActivity() {
 
+    var firebaseRepository = FirestoreRepository()
     private val RC_SIGN_IN = 1
 
     private val signInProviders =
@@ -50,7 +49,7 @@ class SignInActivity : AppCompatActivity() {
 
             if (resultCode == Activity.RESULT_OK) {
                 Toast.makeText(this, "Logging in", Toast.LENGTH_SHORT).show()
-                FirestoreRepository.initCurrentUserIfFirstTime {
+                firebaseRepository.initCurrentUserIfFirstTime {
                     startActivity(intentFor<MainActivity>().newTask().clearTask())
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {

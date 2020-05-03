@@ -13,41 +13,42 @@ class FirestoreRepository {
     var firestoreDB = FirebaseFirestore.getInstance()
     var user = FirebaseAuth.getInstance().currentUser
 
-        private val currentUserDocRef: DocumentReference
-            get() = firestoreDB.document(
-                "users/${FirebaseAuth.getInstance().uid
-                    ?: throw NullPointerException("UID is null.")}"
-            )
+    private val currentUserDocRef: DocumentReference
+        get() = firestoreDB.document(
+            "users/${FirebaseAuth.getInstance().uid
+                ?: throw NullPointerException("UID is null.")}"
+        )
 
 
-        fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
-            currentUserDocRef.get().addOnSuccessListener { docSnap ->
-                if (!docSnap.exists()) {
-                    val newUser = User(user?.displayName ?: "")
-                    currentUserDocRef.set(newUser).addOnSuccessListener {
-                        onComplete()
-                    }
-                } else
+    fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
+        currentUserDocRef.get().addOnSuccessListener { docSnap ->
+            if (!docSnap.exists()) {
+                val newUser = User(user?.displayName ?: "")
+                currentUserDocRef.set(newUser).addOnSuccessListener {
                     onComplete()
-            }
+                }
+            } else
+                onComplete()
         }
+    }
 
-        fun updateCurrentUser(
-            name: String = ""
-        ) {
-            val userFieldMap = mutableMapOf<String, Any>()
-            if (name.isNotBlank()) userFieldMap["name"] = name
-            currentUserDocRef.update(userFieldMap)
-        }
+    fun updateCurrentUser(
+        name: String = ""
+    ) {
+        val userFieldMap = mutableMapOf<String, Any>()
+        if (name.isNotBlank()) userFieldMap["name"] = name
+        currentUserDocRef.update(userFieldMap)
+    }
 
-        fun getUser(): DocumentReference {
-            return currentUserDocRef
-        }
+    fun getUser(): DocumentReference {
+        return currentUserDocRef
+    }
 
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
-           return firestoreDB.collection("users").document("tempuser").collection("observations").add(observationData)
+        return firestoreDB.collection("users").document("tempuser").collection("observations")
+            .add(observationData)
         //TODO: user ${user!!.uid} instead of tempuser
     }
 
@@ -61,14 +62,15 @@ class FirestoreRepository {
 
     // get the all saved observations from firebase
     fun getAllObservations(): CollectionReference {
-        var collectionReference = firestoreDB.collection("users/observations") // temp path for testing
+        var collectionReference =
+            firestoreDB.collection("users/observations") // temp path for testing
         // TODO: change this to check all individual users observations
         return collectionReference
     }
 
     // delete an observation
     fun deleteObservation(observationData: ObservationData): Task<Void> {
-        var documentReference =  firestoreDB.collection("users/tempuser/observations")
+        var documentReference = firestoreDB.collection("users/tempuser/observations")
             .document(observationData.id.toString())
         //TODO: user ${user!!.uid} instead of tempuser
         return documentReference.delete()
