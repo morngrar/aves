@@ -2,6 +2,7 @@ package ntnu20.imt3673.group4.aves
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -18,6 +19,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.preference.PreferenceManager
@@ -26,10 +29,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import ntnu20.imt3673.group4.aves.data.ObservationData
 import ntnu20.imt3673.group4.aves.databinding.FragmentAddObservationBinding
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
 import ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel
+import ntnu20.imt3673.group4.aves.viewmodels.FirestoreViewModel
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import ntnu20.imt3673.group4.aves.weather.WeatherUtil
 import java.io.FileNotFoundException
@@ -44,7 +49,10 @@ class AddObservationFragment : Fragment() {
     private lateinit var currentPhotoPath: String
     private val requestCode = 42
     private val viewModel: AddObservationViewModel by viewModels()
+    private val firestoreViewModel: FirestoreViewModel by viewModels()
     private lateinit var binding: FragmentAddObservationBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,16 +105,7 @@ class AddObservationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val useLocation = sharedPreferences.getBoolean("pref_location", false)
-
-        //Only try to get location and weather if the user hasn't disabled this in settings
-        //TODO:remove this check in final version
-        if (!useLocation) {
-            viewModel.locationNotUsed()
-        } else {
-            getLocationAndWeather()
-        }
+        getLocationAndWeather()
 
         btn_gallery.setOnClickListener {
             pickImageFromGallery()

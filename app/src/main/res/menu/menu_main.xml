@@ -22,6 +22,10 @@
             android:icon="@drawable/ic_wb_sunny_black_24dp"
             android:title="@string/nav_lightSensorDemo" />
         <item
+            android:id="@+id/dest_bird_radar"
+            android:icon="@drawable/ic_place_black_24dp"
+            android:title="Bird Radar" />
+        <item
             android:id="@+id/dest_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/nav_settings" />

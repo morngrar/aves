@@ -17,6 +17,7 @@
     <string name="hint_bird_name">Bird name</string>
     <string name="hint_description">Description</string>
     <string name="lbl_location">Location: %1$s</string>
+    <string name="lbl_description">A small blue bird</string>
     <string name="lbl_btn_add_observation">Add observation</string>
     <string name="lbl_weather_data">Weather data: %1s</string>
     <string name="str_done">Done!</string>
@@ -35,9 +36,6 @@
     <string name="rain_4_mm">Rain: 4 mm</string>
     <string name="wind_12_mps">Wind: 12 mps</string>
     <string name="pressure_1015_4_hpa">Pressure: 1015.4 hPa</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="example_text">Example text</string>
     <string name="search_by_name">Search by name:</string>
     <string name="search_for_a_bird">Search for a bird</string>
