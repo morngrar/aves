@@ -44,6 +44,7 @@ class PlacesReader(private val context: Context) {
         get() = context.resources.openRawResource(R.raw.places)
 
 //    fun read(): List<Place> {
+//        Log.d("AEAEread()", "a")
 //        val itemType = object : TypeToken<List<PlaceResponse>>() {}.type
 //        val reader = InputStreamReader(inputStream)
 //        return gson.fromJson<List<PlaceResponse>>(reader, itemType).map {
@@ -51,18 +52,13 @@ class PlacesReader(private val context: Context) {
 //        }
 //    }
 
-    fun read(): List<Place>{
-        var placesList = mutableListOf<Place>()
-        Log.d("AEAE read()", "")
-
-        allObservations.map {
-            for (observation in it) {
-                Log.d("AEAEobservation: ", observation.toString())
-                placesList.add(observation.toPlace())
-                Log.d("AEAEplaceslist ", placesList.toString())
-            }
+    fun read(): List<Place> {
+        Log.d("AEAEread()", "b")
+        val itemType = object : TypeToken<List<PlaceResponse>>() {}.type
+        val reader = InputStreamReader(inputStream)
+        return gson.fromJson<List<PlaceResponse>>(reader, itemType).map {
+            it.toPlace()
         }
-
-        return placesList
     }
+
 }
