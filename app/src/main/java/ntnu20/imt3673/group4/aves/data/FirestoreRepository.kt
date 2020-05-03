@@ -44,6 +44,27 @@ class FirestoreRepository {
         return currentUserDocRef
     }
 
+    fun resetPassword() {
+        var emailAddress = ""
+        if(user?.email != null)
+            emailAddress = user!!.email.toString()
+        FirebaseAuth.getInstance().sendPasswordResetEmail(emailAddress)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "Email sent.")
+                }
+            }
+    }
+
+    fun deleteUser() {
+        user!!.delete()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("AVES", "User account deleted.")
+                }
+            }
+    }
+
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
