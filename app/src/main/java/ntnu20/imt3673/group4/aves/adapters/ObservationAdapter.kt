@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ntnu20.imt3673.group4.aves.MainActivityFragmentDirections
 import ntnu20.imt3673.group4.aves.data.ObservationData
 import ntnu20.imt3673.group4.aves.databinding.ObservationCardBinding
+import java.io.FileNotFoundException
 import java.util.*
 
 
@@ -52,29 +53,33 @@ class ObservationAdapter(val context: Context) :
         holder.binding.lblCardCount.text = "Number seen: ${observation.count}"
 
         if (observation.imagePath != "") {
-            val thumbWidth = 100//holder.binding.imgBirdPreview.width
-            val thumbHeight = 100//holder.binding.imgBirdPreview.height
-            var thumbnail = ThumbnailUtils.extractThumbnail(
-                BitmapFactory.decodeFile(observation.imagePath),
-                thumbWidth,
-                thumbHeight
-            );
-
-            val exif = ExifInterface(observation.imagePath)
-            val orientation = exif.getAttributeInt(
-                ExifInterface.TAG_ORIENTATION,
-                ExifInterface.ORIENTATION_NORMAL
-            )
-
-            val matrix = Matrix()
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
-                matrix.postRotate(90.0f)
-                thumbnail = Bitmap.createBitmap(
-                    thumbnail, 0, 0, thumbnail.width, thumbnail.height, matrix, true
+            try {
+                val thumbWidth = 100//holder.binding.imgBirdPreview.width
+                val thumbHeight = 100//holder.binding.imgBirdPreview.height
+                var thumbnail = ThumbnailUtils.extractThumbnail(
+                    BitmapFactory.decodeFile(observation.imagePath),
+                    thumbWidth,
+                    thumbHeight
                 );
-            }
 
-            holder.binding.imgBirdPreview.setImageBitmap(thumbnail!!)
+                val exif = ExifInterface(observation.imagePath)
+                val orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL
+                )
+
+                val matrix = Matrix()
+                if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
+                    matrix.postRotate(90.0f)
+                    thumbnail = Bitmap.createBitmap(
+                        thumbnail, 0, 0, thumbnail.width, thumbnail.height, matrix, true
+                    );
+                }
+
+                holder.binding.imgBirdPreview.setImageBitmap(thumbnail!!)
+            } catch (e: FileNotFoundException) {
+                // do nothing - default pic will be used
+            }
         }
 
         holder.itemView.setOnClickListener {

@@ -51,6 +51,7 @@ class FirestoreViewModel : ViewModel() {
                 val observationData = doc.toObject(ObservationData::class.java)
                 savedObservationList.add(observationData)
             }
+            savedObservationList.sortByDescending { it.time }
             savedObservations.value = savedObservationList
 
         })

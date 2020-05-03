@@ -40,13 +40,6 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotLocation.value = true
     }
 
-    /** Handle for changing the text if the user has turned off location in the app settings */
-    // TODO: remove this in final version
-    private val notPermittedString = application.resources.getString(R.string.str_not_permitted)
-    fun locationNotUsed() {
-        _location.value = notPermittedString
-    }
-
     /** Weather-related variables */
     private var _gotWeather = MutableLiveData(false)
     val gotWeather: LiveData<Boolean>

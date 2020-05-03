@@ -115,9 +115,11 @@ class AddObservationFragment : Fragment() {
 
         getLocationAndWeather()
 
+/*
         btn_gallery.setOnClickListener {
             pickImageFromGallery()
         }
+*/
 
         //Button to capture image, checks permission first
         btn_capture.setOnClickListener {
