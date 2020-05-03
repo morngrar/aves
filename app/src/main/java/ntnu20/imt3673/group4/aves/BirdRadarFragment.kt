@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.delay
@@ -49,6 +51,7 @@ class BirdRadarFragment : Fragment() {
         fragmentTransaction.commit();
 
         places = mutableListOf<Place>()
+        getLocation()
 
         allObservations.observe(viewLifecycleOwner, Observer { it ->
             it.forEach {
@@ -57,28 +60,27 @@ class BirdRadarFragment : Fragment() {
         })
 
         mapFragment.getMapAsync {
-                googleMap -> addMarkers(googleMap)
-//                googleMap.setOnMapLoadedCallback {
-//                    val bounds = LatLngBounds.builder()
-//
-//                }
+                googleMap -> addMarkers(googleMap)  // Add markers for observations
+                googleMap.setOnMapLoadedCallback {
+                    googleMap.moveCamera(CameraUpdateFactory.   // Set map camera to users location
+                    newLatLngZoom(LatLng(latitude, longitude), 12.0F))
+                }
         }
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bird_radar, container, false)
     }
 
-//    /** Gets the location consecutively in the background */
-//    private fun getLocationAndWeather() = lifecycleScope.launch {
-//        delay(1000)
-//        if (PermissionUtility.haveFineLocationPermission(requireContext())) {
-//            Log.d("AVES", "havePermission")
-//            latitude = LocationUtility.latitude
-//            longitude = LocationUtility.longitude
-//        } else {
-//            Log.d("AVES", "havePermission is false")
-//        }
-//    }
+    /** Gets the current location */
+    private fun getLocation() {
+        if (PermissionUtility.haveFineLocationPermission(requireContext())) {
+            Log.d("AVES", "havePermission")
+            latitude = LocationUtility.latitude
+            longitude = LocationUtility.longitude
+        } else {
+            Log.d("AVES", "havePermission is false")
+        }
+    }
 
     /**
      * Adds marker representations of the places list on the provided GoogleMap object.
