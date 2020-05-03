@@ -1,18 +1,11 @@
 package ntnu20.imt3673.group4.aves
 
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreferenceCompat
-import com.firebase.ui.auth.AuthUI
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.newTask
-import org.jetbrains.anko.support.v4.intentFor
 
 /** Fragment for changing settings in the app */
 class SettingsFragment : PreferenceFragmentCompat() {
