@@ -24,6 +24,7 @@
         android:allowBackup="true"
         tools:ignore="AllowBackup">
         <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppThemeLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

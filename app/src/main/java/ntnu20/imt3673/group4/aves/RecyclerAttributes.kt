@@ -3,6 +3,7 @@ package ntnu20.imt3673.group4.aves
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ntnu20.imt3673.group4.aves.adapters.BirdSearchAdapter
+import ntnu20.imt3673.group4.aves.adapters.BirdSearchDetailAdapter
 import ntnu20.imt3673.group4.aves.adapters.ObservationAdapter
 import ntnu20.imt3673.group4.aves.data.ObservationData
 
@@ -13,7 +14,12 @@ fun observationList(view: RecyclerView, observations: List<ObservationData>?) {
     }
 }
 
-
+@BindingAdapter("app:birdSearchDetailList")
+fun searchDetailList(view: RecyclerView, results: List<BirdImage>?) {
+    results?.let {
+        (view.adapter as BirdSearchDetailAdapter).submitList(it)
+    }
+}
 
 @BindingAdapter("app:searchResultList")
 fun searchResultList(view: RecyclerView, results: List<List<BirdImage>>?) {
