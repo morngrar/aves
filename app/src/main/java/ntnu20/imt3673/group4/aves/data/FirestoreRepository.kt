@@ -57,16 +57,13 @@ class FirestoreRepository {
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
-        return firestoreDB.collection("users").document("tempuser").collection("observations")
+        return firestoreDB.collection("users").document(user!!.uid).collection("observations")
             .add(observationData)
-        //TODO: user ${user!!.uid} instead of tempuser
     }
 
     // get the users saved observations from firebase
     fun getSavedObservations(): CollectionReference {
-        var collectionReference = firestoreDB.collection("users/tempuser/observations")
-        //TODO: user ${user!!.uid} instead of tempuser
-
+        var collectionReference = firestoreDB.collection("users/${user!!.uid}/observations")
         return collectionReference
     }
 
@@ -80,9 +77,8 @@ class FirestoreRepository {
 
     // delete an observation
     fun deleteObservation(observationData: ObservationData): Task<Void> {
-        var documentReference = firestoreDB.collection("users/tempuser/observations")
+        var documentReference = firestoreDB.collection("users/${user!!.uid}/observations")
             .document(observationData.id.toString())
-        //TODO: user ${user!!.uid} instead of tempuser
         return documentReference.delete()
     }
 
