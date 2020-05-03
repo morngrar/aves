@@ -47,4 +47,5 @@
     <string name="search_for_a_bird">Search for a bird</string>
     <string name="temperature_14_4_c">Temperature: 14.4°C</string>
     <string name="your_observations">Your observations:</string>
+    <string name="number_of_birds_seen">Number of birds seen</string>
 </resources>
