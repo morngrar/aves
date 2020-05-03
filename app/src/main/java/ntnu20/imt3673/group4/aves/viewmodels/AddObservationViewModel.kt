@@ -1,18 +1,23 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ntnu20.imt3673.group4.aves.R
 import ntnu20.imt3673.group4.aves.data.ObservationData
-import ntnu20.imt3673.group4.aves.data.ObservationDatabase
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import java.util.*
 
 /** ViewModel for the AddObservation fragment */
 class AddObservationViewModel(application: Application) : AndroidViewModel(application) {
+
+
+    private val firestoreViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(
+        Application()
+    ).create(FirestoreViewModel::class.java)
 
     /** Location-related variables */
     private var latitude: Double? = null
@@ -77,15 +82,31 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         path = imgPath
     }
 
-    private val db = ObservationDatabase.getInstance(application)
+    //private val db = ObservationDatabase.getInstance(application)
     fun addObservation() = viewModelScope.launch {
         var calcPath: String = ""
         if (path != null) {
             calcPath = path!!
         }
-        db.observations().insertObservation(
+//        db.observations().insertObservation(
+//            ObservationData(
+//                0,
+//                birdName.value!!,
+//                description,
+//                calcPath,
+//                time.time,
+//                latitude!!,
+//                longitude!!,
+//                weatherDataPoint!!.precipitationValue!!,
+//                weatherDataPoint!!.windSpeed!!,
+//                weatherDataPoint!!.cloudiness!!,
+//                weatherDataPoint!!.pressure!!
+//            )
+//        )
+
+        firestoreViewModel.saveObservationToFirebase(
             ObservationData(
-                0,
+                "",
                 birdName.value!!,
                 description,
                 calcPath,

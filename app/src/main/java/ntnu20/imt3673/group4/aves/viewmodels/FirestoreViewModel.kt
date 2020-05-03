@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
@@ -47,16 +49,37 @@ class FirestoreViewModel : ViewModel() {
                 return@EventListener
             }
 
-            val savedObservationList : MutableList<ObservationData> = mutableListOf()
+            var savedObservationList : MutableList<ObservationData> = mutableListOf()
             for (doc in value!!) {
-                val addressItem = doc.toObject(ObservationData::class.java)
-                savedObservationList.add(addressItem)
+                var observationData = doc.toObject(ObservationData::class.java)
+                savedObservationList.add(observationData)
             }
             savedObservations.value = savedObservationList
         })
 
         return savedObservations
     }
+
+    // get realtime updates from firebase regarding all observations
+    fun getAllObservations(): LiveData<List<ObservationData>> {
+        firebaseRepository.getAllObservations().addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                savedObservations.value = null
+                return@EventListener
+            }
+
+            val savedObservationList : MutableList<ObservationData> = mutableListOf()
+            for (doc in value!!) {
+                val observationData = doc.toObject(ObservationData::class.java)
+                savedObservationList.add(observationData)
+            }
+            savedObservations.value = savedObservationList
+        })
+
+        return savedObservations
+    }
+
 
     // delete an observation from firebase
     fun deleteObservation(observationData: ObservationData){

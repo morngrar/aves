@@ -24,11 +24,11 @@
             android:id="@+id/dest_add_observation"
             app:destination="@id/dest_add_observation_fragment" />
         <action
-            android:id="@+id/action_view_observation"
-            app:destination="@id/dest_view_observation_fragment" />
-        <action
             android:id="@+id/action_dest_home_to_dest_bird_radar"
             app:destination="@id/dest_bird_radar" />
+        <action
+            android:id="@+id/action_view_observation"
+            app:destination="@id/dest_view_observation_fragment" />
     </fragment>
     <fragment
         android:id="@+id/dest_profile"
