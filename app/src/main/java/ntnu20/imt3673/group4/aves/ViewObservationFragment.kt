@@ -32,10 +32,12 @@ class ViewObservationFragment : Fragment() {
             view_description.text = data.description
             view_time.text = data.time?.let { it1 -> Date(it1).toString() }
             view_location.text = "Loc: %4.4f, %4.4f".format(data.latitude, data.longitude)
-            view_cloudiness.text = data.cloudiness
-            view_rain.text = data.rain + " mm"
-            view_pressure.text = data.pressure + " hPa"
-            view_wind.text = data.windSpeed + " mps"
+            view_cloudiness.text = "Cloud cover: ${data.cloudiness}%"
+            view_rain.text = "Rain: ${data.rain} mm"
+            view_pressure.text = "Pressure: ${data.pressure} hPa"
+            view_wind.text = "Wind speed: ${data.windSpeed} mps"
+            //view_temperature.text = "Temperature: unknown"
+            view_temperature.text = "Temperature ${data.temperature}°C"
 
             // Set the imageView
             if(data.imagePath != "") {

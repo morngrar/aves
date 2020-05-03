@@ -63,26 +63,40 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/view_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/lbl_description" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/view_description"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="1"
-                            android:text="@string/lbl_description" />
-
-                        <TextView
                             android:id="@+id/view_location"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/lbl_location" />
+
+                        <TextView
+                            android:id="@+id/view_temperature"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/temperature_14_4_c" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -93,7 +107,9 @@
                         <TextView
                             android:id="@+id/view_cloudiness"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/cloud_cover_23" />
@@ -101,7 +117,9 @@
                         <TextView
                             android:id="@+id/view_pressure"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/pressure_1015_4_hpa" />
@@ -115,7 +133,9 @@
                         <TextView
                             android:id="@+id/view_rain"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/rain_4_mm"
@@ -124,7 +144,9 @@
                         <TextView
                             android:id="@+id/view_wind"
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/wind_12_mps" />
