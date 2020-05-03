@@ -19,7 +19,6 @@ class FirestoreRepository {
                 ?: throw NullPointerException("UID is null.")}"
         )
 
-
     fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
         currentUserDocRef.get().addOnSuccessListener { docSnap ->
             if (!docSnap.exists()) {
@@ -55,16 +54,6 @@ class FirestoreRepository {
                 }
             }
     }
-
-    fun deleteUser() {
-        user!!.delete()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("AVES", "User account deleted.")
-                }
-            }
-    }
-
 
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
