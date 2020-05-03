@@ -1,7 +1,6 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
@@ -31,6 +30,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
     private var _location = MutableLiveData(fetchingString)
     val location: LiveData<String>
         get() = _location
+
 
     /** Setter for location will also turn on flags changing text color */
     fun setLocation(lat: Double, lon: Double) {
@@ -63,9 +63,10 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         ownerID = id
     }
 
-    /** The bird's name */
+    /** Manual input fields */
     var birdName = MutableLiveData("") //TODO: change in final version
-    var description: String? = null
+    var description = MutableLiveData("")
+    var count = MutableLiveData("")
 
     /** The current time */
     val time = Date()
@@ -100,7 +101,8 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
                 "",
                 ownerID,
                 birdName.value!!,
-                description,
+                description.value,
+                count.value,
                 calcPath,
                 time.time,
                 latitude!!,

@@ -40,23 +40,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_my_friends"
+            android:id="@+id/txt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/friends"
+            android:textSize="15sp"
             android:textAlignment="center"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/txt_my_observations"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/my_observations"
-            android:textAlignment="center"
-            android:textSize="18sp" />
-
+            android:textStyle="italic"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,13 +57,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/txt_total_sightings"
-                />
-            <TextView
-                android:id="@+id/txt_most_frequent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/txt_most_frequent"
                 />
 
         </LinearLayout>

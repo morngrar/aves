@@ -14,113 +14,106 @@
         android:layout_height="match_parent"
         tools:context=".AddObservationFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/image_view_observation"
-                android:layout_width="328dp"
-                android:layout_height="338dp"
-                android:layout_marginTop="16dp"
-                android:src="@{@drawable/ic_image}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/image_of_observation" />
-
-            <Button
-                android:id="@+id/btn_add_observation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:enabled="@{vm.validated}"
-                android:text="@string/lbl_btn_add_observation"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="parent" />
-
             <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="402dp"
-                android:layout_height="185dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="84dp"
+                android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_observation">
+                android:gravity="center"
+                android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/txt_bird_name"
+                <ImageView
+                    android:id="@+id/image_view_observation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textAutoComplete"
-                    android:text="@={vm.birdName}"
-                    android:autofillHints="@string/hint_bird_name"
-                    android:hint="@string/hint_bird_name" />
-                <EditText
-                    android:id="@+id/txt_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textAutoComplete"
-                    android:text="@={vm.description}"
-                    android:autofillHints="@string/hint_description"
-                    android:hint="@string/hint_description" />
+                    android:layout_height="250dp"
+                    android:layout_margin="16dp"
+                    android:src="@{@drawable/ic_image}"
+                    android:contentDescription="@string/image_of_observation" />
 
-                <TextView
-                    android:id="@+id/txt_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{@string/lbl_location(vm.location)}"
-                    android:textColor="@{vm.gotLocation ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
-                    android:textSize="18sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txt_weather"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{vm.gotWeather ? @string/lbl_weather_data(@string/str_done) : @string/lbl_weather_data(@string/str_retrieving)}"
-                    android:textColor="@{vm.gotWeather ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
-                    android:textSize="18sp" />
+                    <Button
+                        android:id="@+id/btn_gallery"
+                        android:layout_width="61dp"
+                        android:layout_height="57dp"
+                        android:background="@drawable/ic_gallery"/>
 
-                <TextView
-                    android:id="@+id/txt_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{vm.timeString}"
-                    android:textSize="18sp" />
+                    <Button
+                        android:id="@+id/btn_capture"
+                        android:layout_width="61dp"
+                        android:layout_height="57dp"
+                        android:background="@drawable/ic_camera_alt_black_24dp" />
+                </LinearLayout>
 
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="24dp">
+
+                    <EditText
+                        android:id="@+id/txt_bird_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/hint_bird_name"
+                        android:hint="@string/hint_bird_name"
+                        android:inputType="textAutoComplete"
+                        android:text="@={vm.birdName}" />
+
+                    <EditText
+                        android:id="@+id/txt_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="@string/hint_description"
+                        android:hint="@string/hint_description"
+                        android:inputType="textAutoComplete"
+                        android:text="@={vm.description}" />
+
+                    <EditText
+                        android:id="@+id/txt_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="1"
+                        android:hint="@string/number_of_birds_seen"
+                        android:inputType="number"
+                        android:text="@={vm.count}" />
+
+                    <TextView
+                        android:id="@+id/txt_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/lbl_location(vm.location)}"
+                        android:textColor="@{vm.gotLocation ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.gotWeather ? @string/lbl_weather_data(@string/str_done) : @string/lbl_weather_data(@string/str_retrieving)}"
+                        android:textColor="@{vm.gotWeather ? @android:color/holo_green_dark : @android:color/holo_red_dark}"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/btn_add_observation"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{vm.validated}"
+                    android:text="@string/lbl_btn_add_observation"/>
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_capture"
-                android:layout_width="61dp"
-                android:layout_height="57dp"
-                android:background="@drawable/ic_camera_alt_black_24dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toEndOf="@+id/image_view_observation"
-                app:layout_constraintHorizontal_bias="0.666"
-                app:layout_constraintStart_toStartOf="@+id/image_view_observation"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_observation"
-                app:layout_constraintVertical_bias="0.461" />
-
-            <Button
-                android:id="@+id/btn_gallery"
-                android:layout_width="61dp"
-                android:layout_height="57dp"
-                android:background="@drawable/ic_gallery"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                app:layout_constraintEnd_toEndOf="@+id/image_view_observation"
-                app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintStart_toStartOf="@+id/image_view_observation"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_observation"
-                app:layout_constraintVertical_bias="0.461" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </FrameLayout>
 </layout>

@@ -19,11 +19,18 @@ class FirestoreRepository {
                 ?: throw NullPointerException("UID is null.")}"
         )
 
-
     fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
         currentUserDocRef.get().addOnSuccessListener { docSnap ->
             if (!docSnap.exists()) {
-                val newUser = User(user?.displayName ?: "")
+                var name: String = ""   // Get the name linked with the google sign in provided data
+                var email: String = ""
+                val cUser = FirebaseAuth.getInstance().currentUser
+                cUser?.let {
+                    // Name from sign-in provider
+                    name = cUser.displayName.toString()
+                    email = cUser.email.toString()
+                }
+                val newUser = User(name, email)
                 currentUserDocRef.set(newUser).addOnSuccessListener {
                     onComplete()
                 }
@@ -33,10 +40,12 @@ class FirestoreRepository {
     }
 
     fun updateCurrentUser(
-        name: String = ""
+        name: String = "",
+        email: String = ""
     ) {
         val userFieldMap = mutableMapOf<String, Any>()
         if (name.isNotBlank()) userFieldMap["name"] = name
+        if (email.isNotBlank()) userFieldMap["email"] = email
         currentUserDocRef.update(userFieldMap)
     }
 

@@ -49,6 +49,7 @@ class ObservationAdapter(val context: Context) :
         holder.binding.lblCardRain.text = "Rain: ${observation.rain} mm"
         holder.binding.lblCardWindspeed.text = "Wind speed: ${observation.windSpeed} mps"
         holder.binding.lblCardTemperature.text = "Temperature: ${observation.temperature}°C"
+        holder.binding.lblCardCount.text = "Number seen: ${observation.count}"
 
         if (observation.imagePath != "") {
             val thumbWidth = 100//holder.binding.imgBirdPreview.width

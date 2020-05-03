@@ -1,5 +1,6 @@
 package ntnu20.imt3673.group4.aves
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
 import android.util.Log
@@ -29,7 +30,10 @@ class ProfileFragment : Fragment() {
     ).create(FirestoreViewModel::class.java)
 
     private val user = firestoreViewModel.getCurrentUser()
+    private val myObs = firestoreViewModel.getSavedObservations()
+    private lateinit var totalSightings: String
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +42,12 @@ class ProfileFragment : Fragment() {
         views = FragmentProfileBinding.inflate(inflater, container, false)
         user.observe(viewLifecycleOwner, Observer {
             txt_real_name.text = it.name
+            txt_email.text = it.email
         })
+        myObs.observe(viewLifecycleOwner, Observer {
+            txt_total_sightings.text = "Total sightings: ${it.size.toString()}"
+        })
+
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -59,6 +68,7 @@ class ProfileFragment : Fragment() {
                     startActivity(intentFor<SignInActivity>().newTask().clearTask())
                 }
         }
+
     }
 
 }

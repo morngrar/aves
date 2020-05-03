@@ -7,7 +7,7 @@
     android:id="@+id/bird_radar"
     tools:context=".BirdRadarFragment">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         class="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/map_fragment"
         android:layout_width="match_parent"

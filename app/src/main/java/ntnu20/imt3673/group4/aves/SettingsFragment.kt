@@ -1,6 +1,5 @@
 package ntnu20.imt3673.group4.aves
 
-
 import android.os.Bundle
 import android.widget.Toast
 import androidx.preference.Preference
