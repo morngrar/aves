@@ -2,7 +2,6 @@ package ntnu20.imt3673.group4.aves
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -11,25 +10,21 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
-import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.fragment_add_observation.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ntnu20.imt3673.group4.aves.data.ObservationData
 import ntnu20.imt3673.group4.aves.databinding.FragmentAddObservationBinding
 import ntnu20.imt3673.group4.aves.location.LocationUtility
 import ntnu20.imt3673.group4.aves.location.PermissionUtility
@@ -37,8 +32,8 @@ import ntnu20.imt3673.group4.aves.viewmodels.AddObservationViewModel
 import ntnu20.imt3673.group4.aves.viewmodels.FirestoreViewModel
 import ntnu20.imt3673.group4.aves.weather.WeatherDataPoint
 import ntnu20.imt3673.group4.aves.weather.WeatherUtil
-import java.io.FileNotFoundException
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*

@@ -36,7 +36,15 @@
     <string name="rain_4_mm">Rain: 4 mm</string>
     <string name="wind_12_mps">Wind: 12 mps</string>
     <string name="pressure_1015_4_hpa">Pressure: 1015.4 hPa</string>
+    <string name="text_new_bird">New Discovery!</string>
+    <string name="txt_your_statistics">Your Statistics</string>
+    <string name="txt_total_sightings">Total Sightings: </string>
+    <string name="txt_most_frequent">Most Frequent Sighting: </string>
+    <string name="sign_in">Sign In</string>
+    <string name="log_out">Log Out</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="example_text">Example text</string>
+    <string name="search_by_name">Search by name:</string>
+    <string name="search_for_a_bird">Search for a bird</string>
+    <string name="your_observations">Your observations:</string>
 </resources>

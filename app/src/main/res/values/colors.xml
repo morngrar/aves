@@ -10,4 +10,6 @@
     <color name="windowBackgroundDark">#404040</color>
     <color name="colorDarkThemePrimary">#aeaeae</color>
     <color name="colorDarkThemePrimaryDark">#606060</color>
+    <color name="appColor">#3DDC84</color>
+    <color name="cancelColor">#FF0000</color>
 </resources>
