@@ -22,6 +22,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_add_observation.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -53,7 +54,7 @@ class AddObservationFragment : Fragment() {
     private val firestoreViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(
         Application()
     ).create(FirestoreViewModel::class.java)
-    private val user = firestoreViewModel.getCurrentUser()
+    var user = FirebaseAuth.getInstance().currentUser
 
 
 
@@ -70,12 +71,8 @@ class AddObservationFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
 
-
-        user.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            userID = it.id.toString()
-            viewModel.setOwnerID(userID)
-            Log.d("AAA USER ID: ", userID)
-        })
+        userID = user?.uid.toString()
+        viewModel.setOwnerID(userID)
 
         return binding.root
     }
