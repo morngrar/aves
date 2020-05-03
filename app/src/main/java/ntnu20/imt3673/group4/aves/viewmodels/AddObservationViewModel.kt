@@ -57,6 +57,12 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotWeather.value = true
     }
 
+    /** The owner's ID */
+    private lateinit var ownerID: String
+    fun setOwnerID(id: String) {
+        ownerID = id
+    }
+
     /** The bird's name */
     var birdName = MutableLiveData("") //TODO: change in final version
     var description: String? = null
@@ -88,25 +94,11 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         if (path != null) {
             calcPath = path!!
         }
-//        db.observations().insertObservation(
-//            ObservationData(
-//                0,
-//                birdName.value!!,
-//                description,
-//                calcPath,
-//                time.time,
-//                latitude!!,
-//                longitude!!,
-//                weatherDataPoint!!.precipitationValue!!,
-//                weatherDataPoint!!.windSpeed!!,
-//                weatherDataPoint!!.cloudiness!!,
-//                weatherDataPoint!!.pressure!!
-//            )
-//        )
 
         firestoreViewModel.saveObservationToFirebase(
             ObservationData(
                 "",
+                ownerID,
                 birdName.value!!,
                 description,
                 calcPath,
