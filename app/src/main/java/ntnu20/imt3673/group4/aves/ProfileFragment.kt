@@ -29,6 +29,7 @@ class ProfileFragment : Fragment() {
     ).create(FirestoreViewModel::class.java)
 
     private val user = firestoreViewModel.getCurrentUser()
+    private lateinit var totalSightings: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +46,13 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        Log.d("AAAA", firestoreViewModel.savedObservations.value.toString())
+
+        totalSightings = firestoreViewModel.savedObservations.value?.size.toString()
+        totalSightings?.let {
+            txt_total_sightings.text = totalSightings
+        }
+
         /* Edit profile */
         btn_edit_profile.setOnClickListener {
             val actionDestFragmentEditProfile =
@@ -59,6 +67,7 @@ class ProfileFragment : Fragment() {
                     startActivity(intentFor<SignInActivity>().newTask().clearTask())
                 }
         }
+
     }
 
 }

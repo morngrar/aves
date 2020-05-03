@@ -1,15 +1,12 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.*
 import ntnu20.imt3673.group4.aves.data.FirestoreRepository
 import ntnu20.imt3673.group4.aves.data.ObservationData
 import ntnu20.imt3673.group4.aves.data.User

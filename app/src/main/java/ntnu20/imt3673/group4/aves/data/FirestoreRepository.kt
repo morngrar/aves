@@ -19,7 +19,6 @@ class FirestoreRepository {
                 ?: throw NullPointerException("UID is null.")}"
         )
 
-
     fun initCurrentUserIfFirstTime(onComplete: () -> Unit) {
         currentUserDocRef.get().addOnSuccessListener { docSnap ->
             if (!docSnap.exists()) {
