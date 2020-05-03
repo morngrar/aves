@@ -23,6 +23,9 @@
         android:theme="@style/AppThemeLight"
         android:allowBackup="true"
         tools:ignore="AllowBackup">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity android:name=".MainActivity"
             android:theme="@style/AppThemeLight">
             <intent-filter>
