@@ -54,7 +54,6 @@ class FirestoreViewModel : ViewModel() {
             savedObservations.value = savedObservationList
 
         })
-//        Log.d("AAAA", savedObservations.value?.size.toString())
         return savedObservations
     }
 

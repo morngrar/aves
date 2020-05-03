@@ -55,16 +55,6 @@ class FirestoreRepository {
             }
     }
 
-    fun deleteUser() {
-        user!!.delete()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("AVES", "User account deleted.")
-                }
-            }
-    }
-
-
     // save observation to firebase
     fun saveObservationData(observationData: ObservationData): Task<DocumentReference> {
         return firestoreDB.collection("users").document("tempuser").collection("observations")
