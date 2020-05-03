@@ -18,10 +18,6 @@
             android:icon="@drawable/ic_person"
             android:title="@string/nav_profile" />
         <item
-            android:id="@+id/dest_lightSensorDemo"
-            android:icon="@drawable/ic_wb_sunny_black_24dp"
-            android:title="@string/nav_lightSensorDemo" />
-        <item
             android:id="@+id/dest_bird_radar"
             android:icon="@drawable/ic_place_black_24dp"
             android:title="Bird Radar" />

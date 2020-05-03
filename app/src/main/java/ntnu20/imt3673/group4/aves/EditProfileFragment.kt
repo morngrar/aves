@@ -9,14 +9,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import ntnu20.imt3673.group4.aves.data.FirestoreRepository
 import ntnu20.imt3673.group4.aves.databinding.FragmentProfileBinding
 
+
 /** Fragment for changing profile information */
+
 class FragmentEditProfile : Fragment() {
 
     private lateinit var views: FragmentProfileBinding
+    var firebaseRepository = FirestoreRepository()
 
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         views = FragmentProfileBinding.inflate(inflater, container, false)
         return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
@@ -24,8 +32,20 @@ class FragmentEditProfile : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        /* Save changes */
+        btn_save.setOnClickListener {
+            // save text field data and avatar
+            firebaseRepository
+                .updateCurrentUser(edit_real_name.text.toString())
+
+            // change fragment
+            val actionDestFragmentProfile =
+                FragmentEditProfileDirections.actionDestFragmentProfile()
+            Navigation.findNavController(it).navigate(actionDestFragmentProfile)
+        }
+
         /* Change avatar when clicking the current avatar */
-        avatar.setOnClickListener{
+        avatar.setOnClickListener {
             pickImageFromGallery();
         }
 
@@ -35,26 +55,11 @@ class FragmentEditProfile : Fragment() {
         }
 
         /* Cancel editing profile */
-        btn_cancel.setOnClickListener{
-            // clear text fields
-            //edit_real_name.text!!.clear()
-
-            // TODO: Clear avatar change?
+        btn_cancel.setOnClickListener {
 
             // change fragment
-            val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
-            Navigation.findNavController(it).navigate(actionDestFragmentProfile)
-        }
-
-        /* Save changes */
-        btn_save.setOnClickListener{
-            // TODO: save text field data and avatar
-
-            // clear text fields
-            //edit_real_name.text!!.clear()
-
-            // change fragment
-            val actionDestFragmentProfile = FragmentEditProfileDirections.actionDestFragmentProfile()
+            val actionDestFragmentProfile =
+                FragmentEditProfileDirections.actionDestFragmentProfile()
             Navigation.findNavController(it).navigate(actionDestFragmentProfile)
         }
     }
@@ -67,9 +72,9 @@ class FragmentEditProfile : Fragment() {
         startActivityForResult(intent, 1000)
     }
 
-    /** Replace avatar with the chosen image */
+    /** Update the DB's image path and replace avatar with the chosen image */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == 1000){
+        if (resultCode == Activity.RESULT_OK && requestCode == 1000) {
             avatar.setImageURI(data?.data)
         }
     }
