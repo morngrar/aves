@@ -41,8 +41,8 @@ import java.util.*
 /** Fragment for adding an observation */
 class AddObservationFragment : Fragment() {
 
-    private lateinit var currentPhotoPath: String
-    private val requestCode = 42
+    private  var currentPhotoPath: String = ""
+    private val REQUEST_CODE = 42
     private val viewModel: AddObservationViewModel by viewModels()
     private val firestoreViewModel: FirestoreViewModel by viewModels()
     private lateinit var binding: FragmentAddObservationBinding
@@ -133,7 +133,7 @@ class AddObservationFragment : Fragment() {
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
             // Show popup to request permission
-            requestPermissions(permission, requestCode)
+            requestPermissions(permission, REQUEST_CODE)
         } else {
             // If the permission was already granted, capture the image
             dispatchTakePictureIntent()
@@ -161,7 +161,7 @@ class AddObservationFragment : Fragment() {
                     )
                     // Intent to capture the image
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, requestCode)
+                    startActivityForResult(takePictureIntent, REQUEST_CODE)
                 }
             }
         }
@@ -190,11 +190,11 @@ class AddObservationFragment : Fragment() {
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == requestCode && resultCode == Activity.RESULT_OK) {
-            if(data?.type != "image/*") {   // If the user captured an image
+            if(requestCode == REQUEST_CODE) {   // If the user captured an image
                 image_view_observation.setImageURI(Uri.parse(currentPhotoPath))
                 viewModel.getImageViewPath(currentPhotoPath)
             } else {
-                image_view_observation.setImageURI(data.data)
+                image_view_observation.setImageURI(data?.data)
             }
         }
     }
@@ -204,6 +204,6 @@ class AddObservationFragment : Fragment() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, requestCode)
+        startActivityForResult(intent, 1000)
     }
 }
