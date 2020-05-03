@@ -53,8 +53,6 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        
-
 
         /* Edit profile */
         btn_edit_profile.setOnClickListener {

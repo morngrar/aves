@@ -57,27 +57,6 @@ class FirestoreViewModel : ViewModel() {
         return savedObservations
     }
 
-    // get realtime updates from firebase regarding all observations
-    fun getAllObservations(): LiveData<List<ObservationData>> {
-        firebaseRepository.getAllObservations().addSnapshotListener(EventListener<QuerySnapshot> { value, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e)
-                savedObservations.value = null
-                return@EventListener
-            }
-
-            val savedObservationList : MutableList<ObservationData> = mutableListOf()
-            for (doc in value!!) {
-                val observationData = doc.toObject(ObservationData::class.java)
-                savedObservationList.add(observationData)
-            }
-            savedObservations.value = savedObservationList
-        })
-
-        return savedObservations
-    }
-
-
     // delete an observation from firebase
     fun deleteObservation(observationData: ObservationData){
         firebaseRepository.deleteObservation(observationData).addOnFailureListener {

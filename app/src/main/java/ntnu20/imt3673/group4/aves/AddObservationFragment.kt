@@ -2,6 +2,7 @@ package ntnu20.imt3673.group4.aves
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -18,8 +19,10 @@ import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_add_observation.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -44,8 +47,14 @@ class AddObservationFragment : Fragment() {
     private  var currentPhotoPath: String = ""
     private val REQUEST_CODE = 42
     private val viewModel: AddObservationViewModel by viewModels()
-    private val firestoreViewModel: FirestoreViewModel by viewModels()
+
     private lateinit var binding: FragmentAddObservationBinding
+
+    private lateinit var userID: String
+    private val firestoreViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(
+        Application()
+    ).create(FirestoreViewModel::class.java)
+    var user = FirebaseAuth.getInstance().currentUser
 
 
 
@@ -61,6 +70,10 @@ class AddObservationFragment : Fragment() {
         )
         binding.lifecycleOwner = viewLifecycleOwner
         binding.vm = viewModel
+
+        userID = user?.uid.toString()
+        viewModel.setOwnerID(userID)
+
         return binding.root
     }
 

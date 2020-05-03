@@ -14,6 +14,7 @@ import ntnu20.imt3673.group4.aves.place.Place
 data class ObservationData(
     @PrimaryKey//(autoGenerate = true)
     var id: String = "",
+    val ownerID: String = "",
     val birdName: String = "",
     val description: String? = "",
     val count: String? ="",

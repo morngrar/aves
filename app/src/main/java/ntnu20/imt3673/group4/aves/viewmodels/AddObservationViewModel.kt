@@ -1,7 +1,6 @@
 package ntnu20.imt3673.group4.aves.viewmodels
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
@@ -58,6 +57,12 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         _gotWeather.value = true
     }
 
+    /** The owner's ID */
+    private lateinit var ownerID: String
+    fun setOwnerID(id: String) {
+        ownerID = id
+    }
+
     /** Manual input fields */
     var birdName = MutableLiveData("") //TODO: change in final version
     var description = MutableLiveData("")
@@ -94,6 +99,7 @@ class AddObservationViewModel(application: Application) : AndroidViewModel(appli
         firestoreViewModel.saveObservationToFirebase(
             ObservationData(
                 "",
+                ownerID,
                 birdName.value!!,
                 description.value,
                 count.value,
