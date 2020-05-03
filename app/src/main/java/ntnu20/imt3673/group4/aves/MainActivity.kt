@@ -30,12 +30,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         /* Set app theme at startup */
-        val useDarkMode = sharedPreferences.getBoolean("pref_theme", false)
-        if (useDarkMode) {
-            setTheme(R.style.AppThemeDark)
-        } else {
-            setTheme(R.style.AppThemeLight)
-        }
+        setTheme(R.style.AppThemeLight)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
