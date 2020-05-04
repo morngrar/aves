@@ -1,8 +1,7 @@
-# Preliminary tech-demo for Aves
+# First iteration of Aves
 
-> Some features might be removed in the final version, since this is mostly a required tech demo to demonstrate our skills in that regard.
-
-Aves is an app for recording observations of birds. This is an early tech demo, and does not encompass the concept fully
+Aves is an app for recording observations of birds. This is an early version, which needs a few more changes to be ready for google play.
 
 # Important when testing the app
+ - The app requires a connection to a firestore backend, so instead of setting this up yourself, use the [APK](https://www.dropbox.com/s/ukm9dp7wnwbe6ok/aves-alpha1.apk?dl=1) we have provided for you, simply start your emulator and drag-drop it onto the emulator screen to install it.
  - Use an emulator that has google play installed
