@@ -17,6 +17,6 @@ The user was also fitted with a 'bird radar' which would show any observations t
 </p>
 
 ## Testing the app
-However, if you wish to test the app in it's current state, you can download the [APK](https://www.dropbox.com/s/ukm9dp7wnwbe6ok/aves-alpha1.apk?dl=1) we have provided for you. Then simply start your emulator and drag-drop it onto the emulator screen to install it.
+If you wish to test the app in it's current state, you can download the [APK](https://www.dropbox.com/s/ukm9dp7wnwbe6ok/aves-alpha1.apk?dl=1) we have provided for you. Then simply start your emulator and drag-drop it onto the emulator screen to install it.
 
 **NOTE:** Use an emulator that has google play installed
